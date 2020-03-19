@@ -15,16 +15,16 @@
 语言: [En][Readme-url-En] | [中文][Readme-url-ZhCN]
 ***
 
-## Install
+## 安装
 [![NPM version][npm-image]][npm-url]
 [![NPM bundle size][npm-bundle-size-image]][npm-url]
 [![npm download][download-image]][download-url]
 
 ```shell
-# via npm
+# 通过 npm 安装
 $ npm install @cycjimmy/h5-pages --save
 
-# or via yarn
+# 或者通过 yarn 安装
 $ yarn add @cycjimmy/h5-pages
 ```
 
@@ -116,7 +116,7 @@ const page = singleton(class extends Page {
 ## CDN
 [![jsdelivr][jsdelivr-image]][jsdelivr-url]
 
-To use via a CDN include this in your HTML:
+使用CDN，请在HTML中添加:
 ```text
 <script src="https://cdn.jsdelivr.net/npm/h5-pages@1/dist/h5-pages.umd.min.js"></script>
 ```
