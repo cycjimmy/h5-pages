@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/cycjimmy/h5-pages/compare/v1.0.0...v1.1.0) (2020-03-19)
+
+
+### Features
+
+* add `getPageByName` and `changePageTo` methods ([5e6443a](https://github.com/cycjimmy/h5-pages/commit/5e6443a67aba388d6594c89ee3bf3104f957a95a))
+
 # 1.0.0 (2020-03-19)
 
 
