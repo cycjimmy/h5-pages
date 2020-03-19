@@ -10,9 +10,9 @@
 [![jest][jest-image]][jest-url]
 [![npm license][license-image]][download-url]
 
-* H5 pages based on swiper5+. ([Demo][github-pages-url])
+* H5 Pages 基于 swiper5+. ([Demo][github-pages-url])
 
-Language: [En][Readme-url-En] | [中文][Readme-url-ZhCN]
+语言: [En][Readme-url-En] | [中文][Readme-url-ZhCN]
 ***
 
 ## Install
@@ -28,20 +28,20 @@ $ npm install @cycjimmy/h5-pages --save
 $ yarn add @cycjimmy/h5-pages
 ```
 
-## Usage
-**h5-pages based on [Swiper5+](https://github.com/nolimits4web/Swiper). Add script of swiper in your project first.**
+## 使用
+**h5-pages 基于 [Swiper5+](https://github.com/nolimits4web/Swiper). 首先将 swiper 加入你的工程**
 
-### Methods 
-#### `init`: Initialization function
+### 函数 
+#### `init`: 初始化函数
 ```javascript
 import Swiper from 'swiper';
 import {init} from '@cycjimmy/h5-pages';
 
 init({
-  Swiper,                                                       // constructor of Swiper
-  pages: [page1, page2],                                        // An array of Page instances
-  containerExtraHtml: `<div class="swiper-pagination"></div>`,  // Extra Html under swiper-container, such as navigator, etc.
-  swiperOptions: {                                              // swiper configuration
+  Swiper,                                                       // Swiper的构造函数
+  pages: [page1, page2],                                        // Page实例组成的数组
+  containerExtraHtml: `<div class="swiper-pagination"></div>`,  // swiper-container下额外的Html，比如导航器等
+  swiperOptions: {                                              // swiper的配置项
     direction: 'vertical',
     pagination: {
       el: '.swiper-pagination',
@@ -50,8 +50,8 @@ init({
 })
 ```
 
-#### `Page`: Single page constructor
-##### Build directly with the default Page
+#### `Page`: 单页构造函数
+##### 直接使用默认Page进行构建
 ```javascript
 import {Page} from '@cycjimmy/h5-pages';
 
@@ -63,7 +63,7 @@ const page = new Page({
 });
 ```
 
-##### Use Page extends (recommended)
+##### 使用Page扩展(推荐)
 ```javascript
 import {Page} from '@cycjimmy/h5-pages';
 
@@ -75,17 +75,17 @@ const page = new class extends Page {
     });
   }
 
-  // extraRender: add your custom action When the page loaded
+  // extraRender: 当页面加载完毕时，增加你自定义的操作
   extraRender() {
     console.log('pageLoaded');
   }
 
-  // Other custom extensions
+  // 其他你自定义的扩展
   // ... 
 };
 ```
 
-#### `singleton`: Turn Page instance into singleton mode (recommended)
+#### `singleton`: 将Page实例转化为单例模式(推荐)
 ```javascript
 import {Page, singleton} from '@cycjimmy/h5-pages';
 
@@ -99,9 +99,9 @@ const page = singleton(class extends Page {
 });
 ```
 
-### Available
-* `h5Pages.root`: h5 root element. Don't put pages like popups directly in `body`, it is recommended to use `root` as parent.
-* `h5Pages.swiper`: Main swiper instance
+### 可获取的
+* `h5Pages.root`: 页面根元素，添加弹窗之类的页面请不要直接写在body里，推荐以root作为父级
+* `h5Pages.swiper`: 页面主swiper实例 
 
 ## CDN
 [![jsdelivr][jsdelivr-image]][jsdelivr-url]
