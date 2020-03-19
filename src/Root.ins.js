@@ -12,19 +12,59 @@ export default class {
       return instance();
     }
 
-    this._temp = document.createElement('div');
     this.root = null;
-    this.Swiper = null;
     this.swiper = null;
-    this.pages = [];
     this.els = {};
 
-    this.swiperOptions = {};
-    this.containerExtraHtml = '';
+    this._temp = document.createElement('div');
+    this._Swiper = null;
+    this._swiperOptions = {};
+    this._containerExtraHtml = '';
+    this._pages = [];
 
     instance(this);
   }
 
+  /**
+   * setSwiperConstructor
+   * @param Swiper
+   */
+  setSwiperConstructor(Swiper) {
+    this._Swiper = Swiper;
+    return this;
+  }
+
+  /**
+   * setPages
+   * @param pages
+   */
+  setPages(pages) {
+    this._pages = pages;
+    return this;
+  }
+
+  /**
+   * setSwiperOptions
+   * @param swiperOptions
+   */
+  setSwiperOptions(swiperOptions) {
+    this._swiperOptions = swiperOptions;
+    return this;
+  }
+
+  /**
+   * setContainerExtraHtml
+   * @param containerExtraHtml
+   */
+  setContainerExtraHtml(containerExtraHtml) {
+    this._containerExtraHtml = containerExtraHtml;
+    return this;
+  }
+
+  /**
+   * init
+   * @returns {Promise<*>}
+   */
   init() {
     return Promise.resolve()
       .then(() =>
@@ -38,12 +78,17 @@ export default class {
       .then(() => this.swiper.update());
   }
 
+  /**
+   * _initSwiper
+   * @returns {Promise<void>}
+   * @private
+   */
   _initSwiper() {
     return Promise.resolve()
       .then(() =>
         functionToPromise(() => {
           this.els.swiperContainer = this.root.querySelector(`.${style.swiperContainer}`);
-          this.els.swiperContainer.innerHTML += this.containerExtraHtml;
+          this.els.swiperContainer.innerHTML += this._containerExtraHtml;
           this.els.swiperWrapper = this.els.swiperContainer.querySelector(
             `.${style.swiperWrapper}`
           );
@@ -52,18 +97,18 @@ export default class {
       .then(() =>
         functionToPromise(() => {
           // renderPages
-          this.pages.forEach((page, index) => page.init(index));
+          this._pages.forEach((page, index) => page.init(index));
         })
       )
       .then(() =>
         functionToPromise(() => {
-          this.swiper = new this.Swiper(this.els.swiperContainer, this.swiperOptions);
+          this.swiper = new this._Swiper(this.els.swiperContainer, this._swiperOptions);
         })
       )
       .then(() =>
         functionToPromise(() => {
           // pagesLoaded
-          this.pages.forEach((page) => page.pageLoaded());
+          this._pages.forEach((page) => page.pageLoaded());
         })
       );
   }

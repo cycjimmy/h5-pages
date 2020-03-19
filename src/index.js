@@ -7,6 +7,31 @@ import singleton from './singleton';
 const rootIns = new Root();
 
 /**
+ * init
+ * @param Swiper
+ * @param pages
+ * @param swiperOptions
+ * @param containerExtraHtml
+ * @returns {Promise<*>}
+ */
+const init = ({ Swiper, pages = [], swiperOptions = {}, containerExtraHtml = '' } = {}) => {
+  if (Swiper) {
+    rootIns.setSwiperConstructor(Swiper);
+  } else if (window.Swiper) {
+    rootIns.setSwiperConstructor(window.Swiper);
+  } else {
+    throw new Error('h5Pages.Swiper does not exist');
+  }
+
+  rootIns
+    .setPages(pages)
+    .setSwiperOptions(swiperOptions)
+    .setContainerExtraHtml(containerExtraHtml);
+
+  return rootIns.init();
+};
+
+/**
  * getPageByName
  * @param name
  * @returns {*}
@@ -29,25 +54,10 @@ const changePageTo = (name) => {
 
 export default {
   Page,
-  singleton,
-
-  init: ({ Swiper, pages = [], swiperOptions = {}, containerExtraHtml = '' } = {}) => {
-    if (Swiper) {
-      rootIns.Swiper = Swiper;
-    } else if (window.Swiper) {
-      rootIns.Swiper = window.Swiper;
-    } else {
-      throw new Error('h5Pages.Swiper does not exist');
-    }
-
-    rootIns.pages = pages;
-    rootIns.swiperOptions = swiperOptions;
-    rootIns.containerExtraHtml = containerExtraHtml;
-    return rootIns.init();
-  },
-
+  init,
   getPageByName,
   changePageTo,
+  singleton,
 
   get root() {
     return rootIns.root;

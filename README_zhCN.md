@@ -102,9 +102,16 @@ const page = singleton(class extends Page {
 #### `getPageByName(name)`: 通过名称获取单个页面
 #### `changePageTo(name)`: 跳转到指定名称的页面
 
-### 可获取的
-* `h5Pages.root`: 页面根元素，添加弹窗之类的页面请不要直接写在body里，推荐以root作为父级
-* `h5Pages.swiper`: 页面主swiper实例 
+### 属性
+* `h5Pages`
+  * `h5Pages.root`: H5的根元素，添加弹窗之类的页面请不要直接写在body里，推荐以root作为父级
+  * `h5Pages.swiper`: H5的主swiper实例 
+* `Page`实例
+  * `name`: 该Page实例的名称
+  * `root`: H5的根元素。同`h5Pages.root`
+  * `swiper`: H5的主swiper实例。同`h5Pages.swiper`
+  * `page`: 该Page实例的根元素，即`swiper-slide`元素
+  * `pageIndex`: 该Page实例的下标，同`realIndex`
 
 ## CDN
 [![jsdelivr][jsdelivr-image]][jsdelivr-url]
