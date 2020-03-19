@@ -103,10 +103,10 @@ const page = singleton(class extends Page {
 #### `changePageTo(name)`: Jump to the page with the specified name
 
 ### Property
-* `h5Pages`
+* `h5Pages`:
   * `h5Pages.root`: H5 root element. Don't put pages like popups directly in `body`, it is recommended to use `root` as parent.
   * `h5Pages.swiper`: Main swiper instance for H5.
-* `Page`实例
+* `Page` instance:
   * `name`: The name of the Page instance.
   * `root`: H5 root element. Same as `h5Pages.root`.
   * `swiper`: Main swiper instance for H5. Same as `h5Pages.swiper`.
