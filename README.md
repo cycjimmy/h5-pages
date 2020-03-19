@@ -56,10 +56,10 @@ init({
 import {Page} from '@cycjimmy/h5-pages';
 
 const page = new Page({
-  name: 'page',                                         // 页面名称
-  renderHtml: `<div class="page-wrapper">page</div>`,   // swiper-slide内的Html结构
-  pageEnter: () => console.log('进入页面'),              // 进入页面的钩子函数
-  pageLeave: () => console.log('离开页面'),              // 离开页面的钩子函数
+  name: 'page',                                         // name for page
+  renderHtml: `<div class="page-wrapper">page</div>`,   // Html structure under swiper-slide
+  pageEnter: () => console.log('enter page'),           // Hook function for enter the page
+  pageLeave: () => console.log('leave page'),           // Hook function for leave the page
 });
 ```
 
