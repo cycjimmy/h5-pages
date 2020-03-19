@@ -32,7 +32,7 @@ $ yarn add @cycjimmy/h5-pages
 **h5-pages 基于 [Swiper5+](https://github.com/nolimits4web/Swiper). 首先将 swiper 加入你的工程**
 
 ### 函数 
-#### `init`: 初始化函数
+#### `init()`: 初始化函数
 ```javascript
 import Swiper from 'swiper';
 import {init} from '@cycjimmy/h5-pages';
@@ -41,7 +41,7 @@ init({
   Swiper,                                                       // Swiper的构造函数
   pages: [page1, page2],                                        // Page实例组成的数组
   containerExtraHtml: `<div class="swiper-pagination"></div>`,  // swiper-container下额外的Html，比如导航器等
-  swiperOptions: {                                              // swiper的配置项
+  swiperOptions: {                                              // swiper的配置项(不支持loop)
     direction: 'vertical',
     pagination: {
       el: '.swiper-pagination',
@@ -50,13 +50,13 @@ init({
 })
 ```
 
-#### `Page`: 单页构造函数
+#### `Page()`: 单页构造函数
 ##### 直接使用默认Page进行构建
 ```javascript
 import {Page} from '@cycjimmy/h5-pages';
 
 const page = new Page({
-  name: 'page',                                         // 页面名称
+  name: 'page',                                         // 页面名称. 默认为"page"加下标，如"page0"
   renderHtml: `<div class="page-wrapper">page</div>`,   // swiper-slide内的Html结构
   pageEnter: () => console.log('进入页面'),              // 进入页面的钩子函数
   pageLeave: () => console.log('离开页面'),              // 离开页面的钩子函数
@@ -85,7 +85,7 @@ const page = new class extends Page {
 };
 ```
 
-#### `singleton`: 将Page实例转化为单例模式(推荐)
+#### `singleton(Page)`: 将Page实例转化为单例模式(推荐)
 ```javascript
 import {Page, singleton} from '@cycjimmy/h5-pages';
 
@@ -98,6 +98,9 @@ const page = singleton(class extends Page {
   }
 });
 ```
+
+#### `getPageByName(name)`: 通过名称获取单个页面
+#### `changePageTo(name)`: 跳转到指定名称的页面
 
 ### 可获取的
 * `h5Pages.root`: 页面根元素，添加弹窗之类的页面请不要直接写在body里，推荐以root作为父级

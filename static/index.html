@@ -42,7 +42,18 @@
     }
 
     .page3-wrapper {
+      flex-direction: column;
       background: azure;
+    }
+
+    .jump-to-page1 {
+      display: block;
+      margin-top: 20px;
+      padding: 20px;
+
+      border: 1px solid #666;
+      border-radius: 10px;
+      color: #666;
     }
   </style>
 </head>
@@ -51,7 +62,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@5/js/swiper.min.js"></script>
 <script src="./h5-pages.umd.js"></script>
 <script type="module">
-  const {Page, singleton, init} = h5Pages;
+  const {Page, singleton, init, changePageTo} = h5Pages;
 
   // Common Page
   const page1 = new Page({
@@ -59,7 +70,7 @@
     renderHtml: `<div class="page1-wrapper">page1</div>`,
   });
 
-  // Singleton Page
+  // Extends Page
   const page2 = new class extends Page {
     constructor() {
       super({
@@ -74,8 +85,21 @@
     constructor() {
       super({
         name: 'p3',
-        renderHtml: `<div class="page3-wrapper">page3</div>`,
+        renderHtml: `<div class="page3-wrapper">
+<div>page3</div>
+<a href="javascript:" class="jump-to-page1">Jump to Page1</a>
+</div>`,
       });
+    }
+
+    paramInit() {
+      super.paramInit();
+      this.jumpToPage1Btn = this.page.querySelector(`.jump-to-page1`);
+    }
+
+    eventBind() {
+      super.eventBind();
+      this.jumpToPage1Btn.addEventListener('click', () => changePageTo('p1'));
     }
   });
 
@@ -89,7 +113,7 @@
         el: '.swiper-pagination',
       },
     },
-  })
+  });
 </script>
 </body>
 </html>

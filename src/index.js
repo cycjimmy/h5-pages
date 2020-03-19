@@ -6,6 +6,27 @@ import singleton from './singleton';
 
 const rootIns = new Root();
 
+/**
+ * getPageByName
+ * @param name
+ * @returns {*}
+ */
+const getPageByName = (name) => rootIns.pages.filter((page) => page.name === name)[0];
+
+/**
+ * changePageTo
+ * @param name
+ */
+const changePageTo = (name) => {
+  const targetPage = getPageByName(name);
+
+  if (!targetPage) {
+    return;
+  }
+
+  rootIns.swiper.slideTo(targetPage.pageIndex);
+};
+
 export default {
   Page,
   singleton,
@@ -24,6 +45,9 @@ export default {
     rootIns.containerExtraHtml = containerExtraHtml;
     return rootIns.init();
   },
+
+  getPageByName,
+  changePageTo,
 
   get root() {
     return rootIns.root;
