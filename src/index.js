@@ -36,7 +36,7 @@ const init = ({ Swiper, pages = [], swiperOptions = {}, containerExtraHtml = '' 
  * @param name
  * @returns {*}
  */
-const getPageByName = (name) => rootIns.pages.filter((page) => page.name === name)[0];
+const getPageByName = (name) => rootIns.getPages().filter((page) => page.name === name)[0];
 
 /**
  * changePageTo
@@ -61,6 +61,10 @@ export default {
 
   get root() {
     return rootIns.root;
+  },
+
+  get rootIns() {
+    return rootIns;
   },
 
   get swiper() {

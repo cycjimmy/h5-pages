@@ -35,6 +35,14 @@ export default class {
   }
 
   /**
+   * getPages
+   * @returns {[]}
+   */
+  getPages() {
+    return this._pages;
+  }
+
+  /**
    * setPages
    * @param pages
    */
