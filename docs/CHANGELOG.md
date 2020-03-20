@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/cycjimmy/h5-pages/compare/v1.1.2...v1.1.3) (2020-03-20)
+
+
+### Bug Fixes
+
+* **page:** fix a judgment error ([6baeb93](https://github.com/cycjimmy/h5-pages/commit/6baeb9330381460d5a7b60fad6f0d57c1f27e4e0))
+
 ## [1.1.2](https://github.com/cycjimmy/h5-pages/compare/v1.1.1...v1.1.2) (2020-03-20)
 
 
