@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/cycjimmy/h5-pages/compare/v1.1.3...v1.2.0) (2020-03-20)
+
+
+### Features
+
+* named exports for output ([aae8650](https://github.com/cycjimmy/h5-pages/commit/aae8650e12b5fa637540187343890b1e0d1ba7f7))
+
 ## [1.1.3](https://github.com/cycjimmy/h5-pages/compare/v1.1.2...v1.1.3) (2020-03-20)
 
 
