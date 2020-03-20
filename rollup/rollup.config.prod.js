@@ -6,8 +6,8 @@ export default [
   {
     input,
     output: [
-      { file: pkg.main, format: 'cjs' },
-      { file: pkg.module, format: 'es' }
+      { file: pkg.main, format: 'cjs', exports: 'named' },
+      { file: pkg.module, format: 'es', exports: 'named' }
     ],
     plugins
   },
@@ -17,7 +17,8 @@ export default [
       name,
       file: pkg.browser,
       format: 'umd',
-      banner
+      banner,
+      exports: 'named'
     },
     plugins: [...plugins, terserPlugins]
   }

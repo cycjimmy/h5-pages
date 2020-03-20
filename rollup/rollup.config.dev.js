@@ -11,7 +11,8 @@ export default [
     output: {
       name,
       file: pkg.browser.replace('.min.js', '.js'),
-      format: 'umd'
+      format: 'umd',
+      exports: 'named'
     },
     plugins: [
       ...plugins,

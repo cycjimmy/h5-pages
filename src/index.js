@@ -1,10 +1,13 @@
 import './theme/base.scss';
 
 import Root from './Root.ins';
-import Page from './Page';
-import singleton from './singleton';
+import _Page from './Page';
+import _singleton from './singleton';
 
 const rootIns = new Root();
+
+export const Page = _Page;
+export const singleton = _singleton;
 
 /**
  * init
@@ -14,7 +17,7 @@ const rootIns = new Root();
  * @param containerExtraHtml
  * @returns {Promise<*>}
  */
-const init = ({ Swiper, pages = [], swiperOptions = {}, containerExtraHtml = '' } = {}) => {
+export const init = ({ Swiper, pages = [], swiperOptions = {}, containerExtraHtml = '' } = {}) => {
   if (Swiper) {
     rootIns.setSwiperConstructor(Swiper);
   } else if (window.Swiper) {
@@ -36,13 +39,13 @@ const init = ({ Swiper, pages = [], swiperOptions = {}, containerExtraHtml = '' 
  * @param name
  * @returns {*}
  */
-const getPageByName = (name) => rootIns.getPages().filter((page) => page.name === name)[0];
+export const getPageByName = (name) => rootIns.getPages().filter((page) => page.name === name)[0];
 
 /**
  * changePageTo
  * @param name
  */
-const changePageTo = (name) => {
+export const changePageTo = (name) => {
   const targetPage = getPageByName(name);
 
   if (!targetPage) {
@@ -53,17 +56,17 @@ const changePageTo = (name) => {
 };
 
 export default {
-  Page,
-  init,
-  getPageByName,
-  changePageTo,
-  singleton,
-
   get root() {
     return rootIns.root;
   },
 
   get swiper() {
     return rootIns.swiper;
-  }
+  },
+
+  Page: _Page,
+  singleton: _singleton,
+  init,
+  getPageByName,
+  changePageTo
 };

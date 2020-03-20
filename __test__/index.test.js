@@ -1,22 +1,22 @@
 import Swiper from 'swiper';
 
-import h5Pages from '../src/index';
+import h5Pages, { init, Page, getPageByName, changePageTo } from '../src/index';
 import testSingletonPage from '../__mocks__/testSingletonPage';
 
 describe('init default test', () => {
   test('init() empty parameter will throw an error', () => {
     expect(() => {
-      h5Pages.init();
+      init();
     }).toThrow();
   });
 
   test('init: window.Swiper exists', () => {
     window.Swiper = Swiper;
-    h5Pages.init();
+    init();
   });
 
   test('init(): common parameters test', () => {
-    h5Pages.init({
+    init({
       Swiper,
       pages: [],
       swiperOptions: {},
@@ -27,27 +27,25 @@ describe('init default test', () => {
 
 describe('Page and page-related tests', () => {
   const testPageName = 'testPage';
-  const testPage = new h5Pages.Page({
+  const testPage = new Page({
     name: testPageName
   });
 
   test('testPage default test', (done) => {
-    h5Pages
-      .init({
-        Swiper,
-        pages: [testPage, testSingletonPage]
-      })
-      .then(() => {
-        expect(testPage.name).toBe(testPageName);
-        expect(testPage.root).toBe(h5Pages.root);
-        expect(testPage.swiper).toBe(h5Pages.swiper);
-        expect(h5Pages.getPageByName(testPageName)).toBe(testPage);
+    init({
+      Swiper,
+      pages: [testPage, testSingletonPage]
+    }).then(() => {
+      expect(testPage.name).toBe(testPageName);
+      expect(testPage.root).toBe(h5Pages.root);
+      expect(testPage.swiper).toBe(h5Pages.swiper);
+      expect(getPageByName(testPageName)).toBe(testPage);
 
-        // changePageTo: coveralls
-        h5Pages.changePageTo();
-        h5Pages.changePageTo(testPageName);
+      // changePageTo: coveralls
+      changePageTo();
+      changePageTo(testPageName);
 
-        setTimeout(done, 500);
-      });
+      setTimeout(done, 500);
+    });
   });
 });
