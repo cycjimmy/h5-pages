@@ -22,6 +22,7 @@ export default class {
     this._containerExtraHtml = '';
     this._pages = [];
 
+    this._initRoot();
     instance(this);
   }
 
@@ -75,15 +76,18 @@ export default class {
    */
   init() {
     return Promise.resolve()
-      .then(() =>
-        functionToPromise(() => {
-          this._temp.innerHTML = rootTemplate({ style });
-          this.root = this._temp.querySelector(`.${style.root}`);
-          document.body.appendChild(this.root);
-        })
-      )
       .then(() => this._initSwiper())
       .then(() => this.swiper.update());
+  }
+
+  /**
+   * _initRoot
+   * @private
+   */
+  _initRoot() {
+    this._temp.innerHTML = rootTemplate({ style });
+    this.root = this._temp.querySelector(`.${style.root}`);
+    document.body.appendChild(this.root);
   }
 
   /**
@@ -92,32 +96,30 @@ export default class {
    * @private
    */
   _initSwiper() {
-    return Promise.resolve()
-      .then(() =>
-        functionToPromise(() => {
-          this.els.swiperContainer = this.root.querySelector(`.${style.swiperContainer}`);
-          this.els.swiperContainer.innerHTML += this._containerExtraHtml;
-          this.els.swiperWrapper = this.els.swiperContainer.querySelector(
-            `.${style.swiperWrapper}`
-          );
-        }, 50)
-      )
-      .then(() =>
-        functionToPromise(() => {
-          // renderPages
-          this._pages.forEach((page, index) => page.init(index));
-        })
-      )
-      .then(() =>
-        functionToPromise(() => {
-          this.swiper = new this._Swiper(this.els.swiperContainer, this._swiperOptions);
-        })
-      )
-      .then(() =>
-        functionToPromise(() => {
-          // pagesLoaded
-          this._pages.forEach((page) => page.pageLoaded());
-        })
-      );
+    return (
+      Promise.resolve()
+        .then(() =>
+          functionToPromise(() => {
+            this.els.swiperContainer = this.root.querySelector(`.${style.swiperContainer}`);
+            this.els.swiperContainer.innerHTML += this._containerExtraHtml;
+            this.els.swiperWrapper = this.els.swiperContainer.querySelector(
+              `.${style.swiperWrapper}`
+            );
+          }, 50)
+        )
+        // renderPages
+        .then(() => Promise.all(this._pages.map((page, index) => page.init(index))))
+        .then(() =>
+          functionToPromise(() => {
+            this.swiper = new this._Swiper(this.els.swiperContainer, this._swiperOptions);
+          })
+        )
+        .then(() =>
+          functionToPromise(() => {
+            // pagesLoaded
+            this._pages.forEach((page) => page.pageLoaded());
+          })
+        )
+    );
   }
 }
