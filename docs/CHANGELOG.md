@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/cycjimmy/h5-pages/compare/v1.1.1...v1.1.2) (2020-03-20)
+
+
+### Bug Fixes
+
+* remove rootIns getter ([70843f5](https://github.com/cycjimmy/h5-pages/commit/70843f5d322052994f260b5d41006763c5fd3035))
+
 ## [1.1.1](https://github.com/cycjimmy/h5-pages/compare/v1.1.0...v1.1.1) (2020-03-20)
 
 
