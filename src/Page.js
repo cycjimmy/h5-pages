@@ -85,7 +85,7 @@ export default class {
    * @private
    */
   _setPageCommand() {
-    if (this.swiper) {
+    if (!this.swiper) {
       return;
     }
 
