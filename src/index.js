@@ -63,10 +63,6 @@ export default {
     return rootIns.root;
   },
 
-  get rootIns() {
-    return rootIns;
-  },
-
   get swiper() {
     return rootIns.swiper;
   }
