@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/cycjimmy/h5-pages/compare/v1.1.0...v1.1.1) (2020-03-20)
+
+
+### Bug Fixes
+
+* **pages:** fix private property `pages` not existing ([d07b911](https://github.com/cycjimmy/h5-pages/commit/d07b91127e064486fdea1850cdacc6d0950ff3de))
+
 # [1.1.0](https://github.com/cycjimmy/h5-pages/compare/v1.0.0...v1.1.0) (2020-03-19)
 
 
