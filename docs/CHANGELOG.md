@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/cycjimmy/h5-pages/compare/v1.2.0...v1.2.1) (2020-03-22)
+
+
+### Bug Fixes
+
+* **page:** adjust the hook function of pageLeave trigger timing ([1a6061d](https://github.com/cycjimmy/h5-pages/commit/1a6061d7ade6fcfdb0a3fcb2ec55551517903859))
+
 # [1.2.0](https://github.com/cycjimmy/h5-pages/compare/v1.1.3...v1.2.0) (2020-03-20)
 
 
