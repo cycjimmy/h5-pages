@@ -94,7 +94,8 @@ export default class {
         this._pageEnter(this.swiper);
       }
       if (this.swiper.previousIndex === this.pageIndex) {
-        this._pageLeave(this.swiper);
+        const delay = this.swiper.params.speed || 0;
+        setTimeout(() => this._pageLeave(this.swiper), delay);
       }
     });
   }
