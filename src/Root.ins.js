@@ -22,6 +22,7 @@ export default class {
     this._containerExtraHtml = '';
     this._pages = [];
 
+    this._initH5DefaultEvent();
     this._initRoot();
     instance(this);
   }
@@ -118,8 +119,52 @@ export default class {
           functionToPromise(() => {
             // pagesLoaded
             this._pages.forEach((page) => page.pageLoaded());
-          })
+          }, 100)
         )
     );
+  }
+
+  _initH5DefaultEvent() {
+    // contextMenu preventDefault
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    // fix ios native scrolling
+    document.body.addEventListener(
+      'touchmove',
+      (e) => {
+        e.preventDefault();
+      },
+      {
+        passive: false
+      }
+    );
+
+    // fix ios soft keyboard
+    window.addEventListener('resize', () => {
+      if (
+        document.activeElement.tagName !== 'INPUT' &&
+        document.activeElement.tagName !== 'TEXTAREA'
+      ) {
+        return;
+      }
+
+      setTimeout(() => {
+        if ('scrollIntoView' in document.activeElement) {
+          document.activeElement.scrollIntoView(false);
+        } else {
+          document.activeElement.scrollIntoViewIfNeeded(false);
+        }
+      }, 0);
+    });
+
+    window.addEventListener('focusout', (e) => {
+      const { target } = e;
+      if (target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA') {
+        return;
+      }
+      window.scrollTo(0, 0);
+    });
+
+    return this;
   }
 }
