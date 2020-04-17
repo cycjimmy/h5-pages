@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/cycjimmy/h5-pages/compare/v1.2.1...v1.3.0) (2020-04-17)
+
+
+### Features
+
+* set h5 default event ([036759e](https://github.com/cycjimmy/h5-pages/commit/036759ec026309b4527b67792e49dbb366958feb))
+
 ## [1.2.1](https://github.com/cycjimmy/h5-pages/compare/v1.2.0...v1.2.1) (2020-03-22)
 
 
