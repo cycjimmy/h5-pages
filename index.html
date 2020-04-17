@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>H5 Pages Demo</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <link rel="shortcut icon" href="./favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@5/css/swiper.min.css" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .page1-wrapper,
+    .page2-wrapper,
+    .page3-wrapper {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .page1-wrapper {
+      background: antiquewhite;
+    }
+
+    .page2-wrapper {
+      background: beige;
+    }
+
+    .page3-wrapper {
+      flex-direction: column;
+      background: azure;
+    }
+
+    .jump-to-page1 {
+      display: block;
+      margin-top: 20px;
+      padding: 20px;
+
+      border: 1px solid #666;
+      border-radius: 10px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@5/js/swiper.min.js"></script>
+<script src="./h5-pages.umd.js"></script>
+<script type="module">
+  const {Page, singleton, init, changePageTo} = h5Pages;
+
+  // Common Page
+  const page1 = new Page({
+    name: 'p1',
+    renderHtml: `<div class="page1-wrapper">page1</div>`,
+  });
+
+  // Extends Page
+  const page2 = new class extends Page {
+    constructor() {
+      super({
+        name: 'p2',
+        renderHtml: `<div class="page2-wrapper">page2</div>`,
+      });
+    }
+  };
+
+  // Singleton Page
+  const page3 = singleton(class extends Page {
+    constructor() {
+      super({
+        name: 'p3',
+        renderHtml: `<div class="page3-wrapper">
+<div>page3</div>
+<a href="javascript:" class="jump-to-page1">Jump to Page1</a>
+</div>`,
+      });
+    }
+
+    paramInit() {
+      super.paramInit();
+      this.jumpToPage1Btn = this.page.querySelector(`.jump-to-page1`);
+    }
+
+    eventBind() {
+      super.eventBind();
+      this.jumpToPage1Btn.addEventListener('click', () => changePageTo('p1'));
+    }
+  });
+
+  init({
+    Swiper,
+    pages: [page1, page2, page3],
+    containerExtraHtml: `<div class="swiper-pagination"></div>`,
+    swiperOptions: {
+      direction: 'vertical',
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    },
+  });
+</script>
+</body>
+</html>
