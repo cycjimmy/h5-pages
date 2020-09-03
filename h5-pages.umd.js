@@ -76,34 +76,6 @@
   	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
   }
 
-  var CreateInstance = createCommonjsModule(function (module, exports) {
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports["default"] = void 0;
-  /**
-   * singleton constructor(design patterns)
-   * @returns {function(*=)}
-   * @constructor
-   */
-
-  var _default = function _default() {
-    var instance;
-    return function (newInstance) {
-      if (newInstance) {
-        instance = newInstance;
-      }
-
-      return instance;
-    };
-  };
-
-  exports["default"] = _default;
-  });
-
-  var CreateInstance$1 = /*@__PURE__*/getDefaultExportFromCjs(CreateInstance);
-
   var isPromise = createCommonjsModule(function (module, exports) {
 
   Object.defineProperty(exports, "__esModule", {
@@ -164,6 +136,56 @@
 
   var functionToPromise$1 = /*@__PURE__*/getDefaultExportFromCjs(functionToPromise);
 
+  var CreateInstance = createCommonjsModule(function (module, exports) {
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports["default"] = void 0;
+  /**
+   * singleton constructor(design patterns)
+   * @returns {function(*=)}
+   * @constructor
+   */
+
+  var _default = function _default() {
+    var instance;
+    return function (newInstance) {
+      if (newInstance) {
+        instance = newInstance;
+      }
+
+      return instance;
+    };
+  };
+
+  exports["default"] = _default;
+  });
+
+  var CreateInstance$1 = /*@__PURE__*/getDefaultExportFromCjs(CreateInstance);
+
+  /**
+   * singleton
+   * @param Base
+   * @returns {*}
+   */
+
+  var _singleton = (function (Base) {
+    var instance = new CreateInstance$1();
+
+    if (instance()) {
+      return instance();
+    }
+
+    var base = new Base();
+    instance(base);
+    return base;
+  });
+
+  var css_248z$1 = ".root__root,.root__swiperContainer{position:absolute;z-index:1}.root__swiperWrapper{position:relative;z-index:1}.root__root,.root__swiperContainer{left:0;top:0;width:100%;height:100%}.root__slide{display:flex;justify-content:center;align-items:center}.root__swiperWrapper{width:100%;height:100%;box-sizing:initial;transition-property:transform}.root__slide{flex-direction:column;overflow:hidden}";
+  var style = {"root":"root__root","swiperContainer":"root__swiperContainer","swiperWrapper":"root__swiperWrapper","slide":"root__slide"};
+  styleInject(css_248z$1);
+
   /**
    * Root Template
    * @param style
@@ -175,19 +197,9 @@
     return "\n<div class=\"".concat(style.root, "\">\n  <div class=\"swiper-container ").concat(style.swiperContainer, "\">\n    <div class=\"swiper-wrapper ").concat(style.swiperWrapper, "\"></div>\n  </div>\n</div>\n");
   };
 
-  var css_248z$1 = ".root__root,.root__swiperContainer{position:absolute;z-index:1}.root__swiperWrapper{position:relative;z-index:1}.root__root,.root__swiperContainer{left:0;top:0;width:100%;height:100%}.root__slide{display:flex;justify-content:center;align-items:center}.root__swiperWrapper{width:100%;height:100%;box-sizing:initial;transition-property:transform}.root__slide{flex-direction:column;overflow:hidden}";
-  var style = {"root":"root__root","swiperContainer":"root__swiperContainer","swiperWrapper":"root__swiperWrapper","slide":"root__slide"};
-  styleInject(css_248z$1);
-
-  var instance = new CreateInstance$1();
-
-  var _default = /*#__PURE__*/function () {
-    function _default() {
-      _classCallCheck(this, _default);
-
-      if (instance()) {
-        return instance();
-      }
+  var root = _singleton( /*#__PURE__*/function () {
+    function _class() {
+      _classCallCheck(this, _class);
 
       this.root = null;
       this.swiper = null;
@@ -201,8 +213,6 @@
       this._initH5DefaultEvent();
 
       this._initRoot();
-
-      instance(this);
     }
     /**
      * setSwiperConstructor
@@ -210,7 +220,7 @@
      */
 
 
-    _createClass(_default, [{
+    _createClass(_class, [{
       key: "setSwiperConstructor",
       value: function setSwiperConstructor(Swiper) {
         this._Swiper = Swiper;
@@ -276,7 +286,7 @@
         });
       }
       /**
-       * _initRoot
+       * Init Root Element
        * @private
        */
 
@@ -290,7 +300,7 @@
         document.body.appendChild(this.root);
       }
       /**
-       * _initSwiper
+       * Init Swiper
        * @returns {Promise<void>}
        * @private
        */
@@ -324,6 +334,11 @@
           }, 100);
         });
       }
+      /**
+       * Init H5 Default Event
+       * @private
+       */
+
     }, {
       key: "_initH5DefaultEvent",
       value: function _initH5DefaultEvent() {
@@ -364,10 +379,10 @@
       }
     }]);
 
-    return _default;
-  }();
+    return _class;
+  }());
 
-  var _default$1 = /*#__PURE__*/function () {
+  var _default = /*#__PURE__*/function () {
     /**
      * Page
      * @param name
@@ -375,7 +390,7 @@
      * @param pageEnter
      * @param pageLeave
      */
-    function _default$1(_ref) {
+    function _default(_ref) {
       var _ref$name = _ref.name,
           name = _ref$name === void 0 ? '' : _ref$name,
           _ref$renderHtml = _ref.renderHtml,
@@ -385,7 +400,7 @@
           _ref$pageLeave = _ref.pageLeave,
           pageLeave = _ref$pageLeave === void 0 ? function () {} : _ref$pageLeave;
 
-      _classCallCheck(this, _default$1);
+      _classCallCheck(this, _default);
 
       this.name = name;
       this.pageIndex = 0;
@@ -401,15 +416,11 @@
      */
 
 
-    _createClass(_default$1, [{
+    _createClass(_default, [{
       key: "paramInit",
       value: function paramInit() {
-        var _RootIns = new _default(),
-            swiper = _RootIns.swiper,
-            root = _RootIns.root;
-
-        this.swiper = swiper;
-        this.root = root;
+        this.swiper = root.swiper;
+        this.root = root.root;
       }
       /**
        * eventBind
@@ -469,7 +480,7 @@
 
         return functionToPromise$1(function () {
           _this2.page.innerHTML = _this2._renderHtml;
-          new _default().els.swiperWrapper.appendChild(_this2.page);
+          root.els.swiperWrapper.appendChild(_this2.page);
         });
       }
       /**
@@ -482,48 +493,29 @@
       value: function _setPageCommand() {
         var _this3 = this;
 
-        if (!this.swiper) {
+        if (!root.swiper) {
           return;
         }
 
-        this.swiper.on('slideChange', function () {
-          if (_this3.swiper.realIndex === _this3.pageIndex) {
-            _this3._pageEnter(_this3.swiper);
+        root.swiper.on('slideChange', function () {
+          if (root.swiper.realIndex === _this3.pageIndex) {
+            _this3._pageEnter(root.swiper);
           }
 
-          if (_this3.swiper.previousIndex === _this3.pageIndex) {
-            var delay = _this3.swiper.params.speed || 0;
+          if (root.swiper.previousIndex === _this3.pageIndex) {
+            var delay = root.swiper.params.speed || 0;
             setTimeout(function () {
-              return _this3._pageLeave(_this3.swiper);
+              return _this3._pageLeave(root.swiper);
             }, delay);
           }
         });
       }
     }]);
 
-    return _default$1;
+    return _default;
   }();
 
-  /**
-   * singleton
-   * @param Page
-   * @returns {*}
-   */
-
-  var _singleton = (function (Page) {
-    var instance = new CreateInstance$1();
-
-    if (instance()) {
-      return instance();
-    }
-
-    var page = new Page();
-    instance(page);
-    return page;
-  });
-
-  var rootIns = new _default();
-  var Page = _default$1;
+  var Page = _default;
   var singleton = _singleton;
   /**
    * init
@@ -545,15 +537,15 @@
         containerExtraHtml = _ref$containerExtraHt === void 0 ? '' : _ref$containerExtraHt;
 
     if (Swiper) {
-      rootIns.setSwiperConstructor(Swiper);
+      root.setSwiperConstructor(Swiper);
     } else if (window.Swiper) {
-      rootIns.setSwiperConstructor(window.Swiper);
+      root.setSwiperConstructor(window.Swiper);
     } else {
       throw new Error('h5Pages.Swiper does not exist');
     }
 
-    rootIns.setPages(pages).setSwiperOptions(swiperOptions).setContainerExtraHtml(containerExtraHtml);
-    return rootIns.init();
+    root.setPages(pages).setSwiperOptions(swiperOptions).setContainerExtraHtml(containerExtraHtml);
+    return root.init();
   };
   /**
    * getPageByName
@@ -562,7 +554,7 @@
    */
 
   var getPageByName = function getPageByName(name) {
-    return rootIns.getPages().filter(function (page) {
+    return root.getPages().filter(function (page) {
       return page.name === name;
     })[0];
   };
@@ -578,28 +570,28 @@
       return;
     }
 
-    rootIns.swiper.slideTo(targetPage.pageIndex);
+    root.swiper.slideTo(targetPage.pageIndex);
   };
-  var index = {
+  /**
+   * Get the Core Properties
+   * @type {{readonly swiper: *, readonly root: *}}
+   */
+
+  var h5Pages = {
     get root() {
-      return rootIns.root;
+      return root.root;
     },
 
     get swiper() {
-      return rootIns.swiper;
-    },
+      return root.swiper;
+    }
 
-    Page: _default$1,
-    singleton: _singleton,
-    init: init,
-    getPageByName: getPageByName,
-    changePageTo: changePageTo
   };
 
   exports.Page = Page;
   exports.changePageTo = changePageTo;
-  exports.default = index;
   exports.getPageByName = getPageByName;
+  exports.h5Pages = h5Pages;
   exports.init = init;
   exports.singleton = singleton;
 
