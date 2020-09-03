@@ -1,7 +1,8 @@
 import functionToPromise from '@cycjimmy/awesome-js-funcs/typeConversion/functionToPromise';
 
 import root from '../root/root.ins';
-import style from '../root/root.scss';
+
+import style from './page.scss';
 
 export default class {
   /**
@@ -16,7 +17,7 @@ export default class {
     this.pageIndex = 0;
 
     this.page = document.createElement('div');
-    this.page.classList.add('swiper-slide', style.slide);
+    this.page.classList.add('swiper-slide', style.page);
     this.page.dataset.hash = this.name;
 
     this._renderHtml = renderHtml;

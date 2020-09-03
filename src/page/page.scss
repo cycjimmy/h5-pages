@@ -1,0 +1,7 @@
+@import "~@cycjimmy/sass-lib";
+
+.page {
+  @extend %flexCenter;
+  flex-direction: column;
+  overflow: hidden;
+}

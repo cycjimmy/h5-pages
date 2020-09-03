@@ -16,9 +16,3 @@
   box-sizing: content-box;
   transition-property: transform;
 }
-
-.slide {
-  @extend %flexCenter;
-  flex-direction: column;
-  overflow: hidden;
-}
