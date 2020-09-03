@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/cycjimmy/h5-pages/compare/v2.0.0...v3.0.0) (2020-09-03)
+
+
+### Features
+
+* **singleton:** remove function of singleton ([72f20d4](https://github.com/cycjimmy/h5-pages/commit/72f20d43416c1c0192c139761739a4143029fa09))
+
+
+### BREAKING CHANGES
+
+* **singleton:** remove function of singleton
+
 # [2.0.0](https://github.com/cycjimmy/h5-pages/compare/v1.3.1...v2.0.0) (2020-09-03)
 
 
