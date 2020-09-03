@@ -134,7 +134,7 @@ const page = singleton(class extends Page {
 
 To use via a CDN include this in your HTML:
 ```text
-<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@1/dist/h5-pages.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@2/dist/h5-pages.umd.min.js"></script>
 ```
 
 <!-- Links: -->
