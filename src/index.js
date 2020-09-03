@@ -1,9 +1,11 @@
 import './theme/base.scss';
 
 import _Page from './page/Page';
+import _Popup from './popup/Popup';
 import root from './root/root.ins';
 
 export const Page = _Page;
+export const Popup = _Popup;
 
 /**
  * init

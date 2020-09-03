@@ -107,6 +107,34 @@ const page = new class extends Page {
 * `page`: The root element of the page instance, which is the `swiper-slide` element.
 * `pageIndex`: The index of the page instance, the same as `realIndex` for swiper.
 
+### Popup
+#### Use Popup extends to Build a Popup
+```javascript
+import {Popup} from '@cycjimmy/h5-pages';
+
+const Popup = new class extends Popup {
+  constructor() {
+    super();
+  }
+
+  load() {
+    // You must Overwrite this function with your own function
+  }
+
+  // Other custom extensions
+  // ... 
+};
+```
+
+#### `Popup` Instance Methods
+* `load()`: Load(Show off) the popup. You must Overwrite this function with your own function.
+* `render(htmlText)`: Render custom html texts and add the popup to the root element of h5 page.
+* `remove()`: Remove the popup from the root element of h5 page. 
+
+#### `Popup` instance Properties
+* `root`: H5 root element. Same as `h5Pages.root`.
+* `popup`: The root element of the popup instance.
+
 ## CDN
 [![jsdelivr][jsdelivr-image]][jsdelivr-url]
 

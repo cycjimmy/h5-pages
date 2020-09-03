@@ -20,6 +20,32 @@
       -webkit-text-size-adjust: 100%;
     }
 
+    a {
+      -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+    }
+
+    .popup-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      background: white;
+
+      border: 1px solid #666;
+      border-radius: 10px;
+      color: #666;
+    }
+
+    .popup-close {
+      display: block;
+      margin-top: 20px;
+      padding: 20px;
+
+      border: 1px solid #666;
+      border-radius: 10px;
+      color: #666;
+    }
+
     .page1-wrapper,
     .page2-wrapper,
     .page3-wrapper {
@@ -46,6 +72,7 @@
       background: azure;
     }
 
+    .popup,
     .jump-to-page1 {
       display: block;
       margin-top: 20px;
@@ -62,7 +89,26 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@6/swiper-bundle.js"></script>
 <script src="./h5-pages.umd.js"></script>
 <script type="module">
-  const {Page, init, changePageTo} = h5Pages;
+  const {Page, Popup, init, changePageTo} = h5Pages;
+
+  // Common Popup
+  const popup = new class extends Popup {
+    constructor() {
+      super();
+    }
+
+    load() {
+      return Promise.resolve()
+        .then(() => this.render(`<div class="popup-box">
+<div>Popup</div>
+<a href="javascript:" class="popup-close">Close</a>
+</div>`))
+        .then(() => {
+          this.popup.querySelector('.popup-close')
+            .addEventListener('click', () => this.remove());
+        });
+    }
+  };
 
   // Common Page
   const page1 = new Page({
@@ -70,7 +116,7 @@
     renderHtml: `<div class="page1-wrapper">page1</div>`,
   });
 
-  // Extends Page
+  // Extends Pages
   const page2 = new class extends Page {
     constructor() {
       super({
@@ -80,13 +126,13 @@
     }
   };
 
-  // Singleton Page
   const page3 = new class extends Page {
     constructor() {
       super({
         name: 'p3',
         renderHtml: `<div class="page3-wrapper">
 <div>page3</div>
+<a href="javascript:" class="popup">Activate a Popup</a>
 <a href="javascript:" class="jump-to-page1">Jump to Page1</a>
 </div>`,
       });
@@ -94,12 +140,17 @@
 
     paramInit() {
       super.paramInit();
+      this.popupBtn = this.page.querySelector(`.popup`);
       this.jumpToPage1Btn = this.page.querySelector(`.jump-to-page1`);
     }
 
     eventBind() {
       super.eventBind();
       this.jumpToPage1Btn.addEventListener('click', () => changePageTo('p1'));
+      this.popupBtn.addEventListener('click', () => {
+        console.log('popup');
+        popup.load();
+      });
     }
   };
 

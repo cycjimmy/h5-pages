@@ -95,7 +95,7 @@ const page = new class extends Page {
     console.log('pageLoaded');
   }
 
-  // 其他你自定义的扩展
+  // 其他自定义的扩展
   // ... 
 };
 ```
@@ -106,6 +106,34 @@ const page = new class extends Page {
 * `swiper`: H5的主swiper实例。同`h5Pages.swiper`
 * `page`: 该Page实例的根元素，即`swiper-slide`元素
 * `pageIndex`: 该Page实例的下标，同`realIndex`
+
+### 弹出层
+#### 使用Popup扩展建立一个自定义的弹出
+```javascript
+import {Popup} from '@cycjimmy/h5-pages';
+
+const Popup = new class extends Popup {
+  constructor() {
+    super();
+  }
+
+  load() {
+    // 你必须用自定义的load方法覆盖这个函数
+  }
+
+  // 其他自定义的扩展
+  // ... 
+};
+```
+
+#### `Popup` 实例方法
+* `load()`: 加载(展示)弹出层。你必须用自定义的load方法覆盖这个函数
+* `render(htmlText)`: 渲染自定义的Html文本并且将这个弹出层添加到H5页面的根元素
+* `remove()`: 将弹出层从H5页面根元素中移除.
+
+#### `Popup` 实例属性
+* `root`: H5的根元素。同`h5Pages.root`
+* `popup`: 该Popup实例的根元素
 
 ## CDN
 [![jsdelivr][jsdelivr-image]][jsdelivr-url]
