@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/cycjimmy/h5-pages/compare/v1.3.1...v2.0.0) (2020-09-03)
+
+
+### Features
+
+* rewrite the function for getting core properties(h5Pages); adjust the directory structure; ([c447a33](https://github.com/cycjimmy/h5-pages/commit/c447a338c7a9c91c446f0f90fb540176970c0f9b))
+
+
+### BREAKING CHANGES
+
+* rewrite the function for getting core properties(h5Pages);
+
 ## [1.3.1](https://github.com/cycjimmy/h5-pages/compare/v1.3.0...v1.3.1) (2020-09-03)
 
 
