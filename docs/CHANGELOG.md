@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/cycjimmy/h5-pages/compare/v3.0.0...v3.1.0) (2020-09-03)
+
+
+### Features
+
+* **popup:** add a component of popup ([4d70b38](https://github.com/cycjimmy/h5-pages/commit/4d70b38a34f437773034ba1bd2dd6536ad1ee7a0))
+
 # [3.0.0](https://github.com/cycjimmy/h5-pages/compare/v2.0.0...v3.0.0) (2020-09-03)
 
 
