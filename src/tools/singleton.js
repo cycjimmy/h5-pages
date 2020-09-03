@@ -2,18 +2,18 @@ import CreateInstance from '@cycjimmy/awesome-js-funcs/designPattern/CreateInsta
 
 /**
  * singleton
- * @param Page
+ * @param Base
  * @returns {*}
  */
-export default (Page) => {
+export default (Base) => {
   const instance = new CreateInstance();
 
   if (instance()) {
     return instance();
   }
 
-  const page = new Page();
-  instance(page);
+  const base = new Base();
+  instance(base);
 
-  return page;
+  return base;
 };

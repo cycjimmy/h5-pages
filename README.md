@@ -50,7 +50,30 @@ init({
 })
 ```
 
-#### `Page()`: Single page constructor
+#### `singleton(BaseClass)`: Turn base class to singleton mode
+```javascript
+import {singleton} from '@cycjimmy/h5-pages';
+
+const BaseClass = class {...};
+const instance = singleton(BaseClass);
+```
+
+#### `getPageByName(name)`: Get a single page by name
+#### `changePageTo(name)`: Jump to the page with the specified name
+
+### Use `h5Pages` to Get the Core Properties
+* `h5Pages.root`: H5 root element. Don't put pages like popups directly in `body`, it is recommended to use `root` as parent.
+* `h5Pages.swiper`: Main swiper instance for H5.
+
+```javascript
+import {h5pages} from '@cycjimmy/h5-pages';
+
+console.log(h5Pages.root);    // H5 root element
+console.log(h5Pages.swiper);  // swiper instance
+```
+
+### Single Page
+#### Build Single Page
 ##### Build directly with the default Page
 ```javascript
 import {Page} from '@cycjimmy/h5-pages';
@@ -85,7 +108,7 @@ const page = new class extends Page {
 };
 ```
 
-#### `singleton(Page)`: Turn Page instance into singleton mode (recommended)
+##### `singleton(Page)`: Turn Page instance into singleton mode (recommended)
 ```javascript
 import {Page, singleton} from '@cycjimmy/h5-pages';
 
@@ -99,19 +122,12 @@ const page = singleton(class extends Page {
 });
 ```
 
-#### `getPageByName(name)`: Get a single page by name
-#### `changePageTo(name)`: Jump to the page with the specified name
-
-### Property
-* `h5Pages`:
-  * `h5Pages.root`: H5 root element. Don't put pages like popups directly in `body`, it is recommended to use `root` as parent.
-  * `h5Pages.swiper`: Main swiper instance for H5.
-* `Page` instance:
-  * `name`: The name of the Page instance.
-  * `root`: H5 root element. Same as `h5Pages.root`.
-  * `swiper`: Main swiper instance for H5. Same as `h5Pages.swiper`.
-  * `page`: The root element of the page instance, which is the `swiper-slide` element.
-  * `pageIndex`: The index of the page instance, the same as `realIndex` for swiper.
+#### `Page` instance Properties
+* `name`: The name of the Page instance.
+* `root`: H5 root element. Same as `h5Pages.root`.
+* `swiper`: Main swiper instance for H5. Same as `h5Pages.swiper`.
+* `page`: The root element of the page instance, which is the `swiper-slide` element.
+* `pageIndex`: The index of the page instance, the same as `realIndex` for swiper.
 
 ## CDN
 [![jsdelivr][jsdelivr-image]][jsdelivr-url]

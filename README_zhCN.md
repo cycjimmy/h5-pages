@@ -50,7 +50,30 @@ init({
 })
 ```
 
-#### `Page()`: 单页构造函数
+#### `singleton(BaseClass)`: 将基类转换为单例模式
+```javascript
+import {singleton} from '@cycjimmy/h5-pages';
+
+const BaseClass = class {...};
+const instance = singleton(BaseClass);
+```
+
+#### `getPageByName(name)`: 通过名称获取单个页面
+#### `changePageTo(name)`: 跳转到指定名称的页面
+
+### 使用 `h5Pages` 获取核心属性 
+* `h5Pages.root`: H5的根元素，添加弹窗之类的页面请不要直接写在body里，推荐以root作为父级
+* `h5Pages.swiper`: H5的主swiper实例 
+
+```javascript
+import {h5pages} from '@cycjimmy/h5-pages';
+
+console.log(h5Pages.root);    // 输出H5的根元素
+console.log(h5Pages.swiper);  // 输出swiper实例
+```
+
+### 单页面 Page
+#### 构建单页面
 ##### 直接使用默认Page进行构建
 ```javascript
 import {Page} from '@cycjimmy/h5-pages';
@@ -85,7 +108,7 @@ const page = new class extends Page {
 };
 ```
 
-#### `singleton(Page)`: 将Page实例转化为单例模式(推荐)
+##### `singleton(Page)`: 将Page实例转化为单例模式(推荐)
 ```javascript
 import {Page, singleton} from '@cycjimmy/h5-pages';
 
@@ -99,26 +122,19 @@ const page = singleton(class extends Page {
 });
 ```
 
-#### `getPageByName(name)`: 通过名称获取单个页面
-#### `changePageTo(name)`: 跳转到指定名称的页面
-
-### 属性
-* `h5Pages`
-  * `h5Pages.root`: H5的根元素，添加弹窗之类的页面请不要直接写在body里，推荐以root作为父级
-  * `h5Pages.swiper`: H5的主swiper实例 
-* `Page`实例
-  * `name`: 该Page实例的名称
-  * `root`: H5的根元素。同`h5Pages.root`
-  * `swiper`: H5的主swiper实例。同`h5Pages.swiper`
-  * `page`: 该Page实例的根元素，即`swiper-slide`元素
-  * `pageIndex`: 该Page实例的下标，同`realIndex`
+#### `Page` 实例的属性
+* `name`: 该Page实例的名称
+* `root`: H5的根元素。同`h5Pages.root`
+* `swiper`: H5的主swiper实例。同`h5Pages.swiper`
+* `page`: 该Page实例的根元素，即`swiper-slide`元素
+* `pageIndex`: 该Page实例的下标，同`realIndex`
 
 ## CDN
 [![jsdelivr][jsdelivr-image]][jsdelivr-url]
 
 使用CDN，请在HTML中添加:
 ```text
-<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@1/dist/h5-pages.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@2/dist/h5-pages.umd.min.js"></script>
 ```
 
 <!-- Links: -->

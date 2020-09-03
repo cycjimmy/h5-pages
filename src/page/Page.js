@@ -1,7 +1,7 @@
 import functionToPromise from '@cycjimmy/awesome-js-funcs/typeConversion/functionToPromise';
 
-import RootIns from './Root.ins';
-import style from './theme/root.scss';
+import root from '../root/root.ins';
+import style from '../root/root.scss';
 
 export default class {
   /**
@@ -28,9 +28,8 @@ export default class {
    * paramInit
    */
   paramInit() {
-    const { swiper, root } = new RootIns();
-    this.swiper = swiper;
-    this.root = root;
+    this.swiper = root.swiper;
+    this.root = root.root;
   }
 
   /**
@@ -76,7 +75,7 @@ export default class {
   _render() {
     return functionToPromise(() => {
       this.page.innerHTML = this._renderHtml;
-      new RootIns().els.swiperWrapper.appendChild(this.page);
+      root.els.swiperWrapper.appendChild(this.page);
     });
   }
 
@@ -85,17 +84,17 @@ export default class {
    * @private
    */
   _setPageCommand() {
-    if (!this.swiper) {
+    if (!root.swiper) {
       return;
     }
 
-    this.swiper.on('slideChange', () => {
-      if (this.swiper.realIndex === this.pageIndex) {
-        this._pageEnter(this.swiper);
+    root.swiper.on('slideChange', () => {
+      if (root.swiper.realIndex === this.pageIndex) {
+        this._pageEnter(root.swiper);
       }
-      if (this.swiper.previousIndex === this.pageIndex) {
-        const delay = this.swiper.params.speed || 0;
-        setTimeout(() => this._pageLeave(this.swiper), delay);
+      if (root.swiper.previousIndex === this.pageIndex) {
+        const delay = root.swiper.params.speed || 0;
+        setTimeout(() => this._pageLeave(root.swiper), delay);
       }
     });
   }

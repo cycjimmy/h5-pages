@@ -1,10 +1,8 @@
 import './theme/base.scss';
 
-import Root from './Root.ins';
-import _Page from './Page';
-import _singleton from './singleton';
-
-const rootIns = new Root();
+import _Page from './page/Page';
+import root from './root/root.ins';
+import _singleton from './tools/singleton';
 
 export const Page = _Page;
 export const singleton = _singleton;
@@ -19,19 +17,19 @@ export const singleton = _singleton;
  */
 export const init = ({ Swiper, pages = [], swiperOptions = {}, containerExtraHtml = '' } = {}) => {
   if (Swiper) {
-    rootIns.setSwiperConstructor(Swiper);
+    root.setSwiperConstructor(Swiper);
   } else if (window.Swiper) {
-    rootIns.setSwiperConstructor(window.Swiper);
+    root.setSwiperConstructor(window.Swiper);
   } else {
     throw new Error('h5Pages.Swiper does not exist');
   }
 
-  rootIns
+  root
     .setPages(pages)
     .setSwiperOptions(swiperOptions)
     .setContainerExtraHtml(containerExtraHtml);
 
-  return rootIns.init();
+  return root.init();
 };
 
 /**
@@ -39,7 +37,7 @@ export const init = ({ Swiper, pages = [], swiperOptions = {}, containerExtraHtm
  * @param name
  * @returns {*}
  */
-export const getPageByName = (name) => rootIns.getPages().filter((page) => page.name === name)[0];
+export const getPageByName = (name) => root.getPages().filter((page) => page.name === name)[0];
 
 /**
  * changePageTo
@@ -52,21 +50,19 @@ export const changePageTo = (name) => {
     return;
   }
 
-  rootIns.swiper.slideTo(targetPage.pageIndex);
+  root.swiper.slideTo(targetPage.pageIndex);
 };
 
-export default {
+/**
+ * Get the Core Properties
+ * @type {{readonly swiper: *, readonly root: *}}
+ */
+export const h5Pages = {
   get root() {
-    return rootIns.root;
+    return root.root;
   },
 
   get swiper() {
-    return rootIns.swiper;
-  },
-
-  Page: _Page,
-  singleton: _singleton,
-  init,
-  getPageByName,
-  changePageTo
+    return root.swiper;
+  }
 };

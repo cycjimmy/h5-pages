@@ -1,6 +1,6 @@
 import Swiper from 'swiper';
 
-import h5Pages, { init, Page, getPageByName, changePageTo } from '../src/index';
+import { h5Pages, init, Page, getPageByName, changePageTo } from '../src/index';
 import testSingletonPage from '../__mocks__/testSingletonPage';
 
 describe('init default test', () => {

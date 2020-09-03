@@ -1,5 +1,5 @@
-import singleton from '../src/singleton';
-import Page from '../src/Page';
+import singleton from '../src/tools/singleton';
+import Page from '../src/page/Page';
 
 export default singleton(
   class extends Page {

@@ -1,7 +1,7 @@
 import Swiper from 'swiper';
 
 import { init, changePageTo } from '../src/index';
-import Page from '../src/Page';
+import Page from '../src/page/Page';
 
 import testSingletonPage from '../__mocks__/testSingletonPage';
 
