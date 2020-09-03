@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/cycjimmy/h5-pages/compare/v1.3.0...v1.3.1) (2020-09-03)
+
+
+### Bug Fixes
+
+* **babel:** fix babel error ([50d28d6](https://github.com/cycjimmy/h5-pages/commit/50d28d64fa2b0b550cefde6928751cc79d03ab1f))
+
 # [1.3.0](https://github.com/cycjimmy/h5-pages/compare/v1.2.1...v1.3.0) (2020-04-17)
 
 
