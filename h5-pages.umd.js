@@ -136,8 +136,8 @@
 
   var functionToPromise$1 = /*@__PURE__*/getDefaultExportFromCjs(functionToPromise);
 
-  var css_248z$1 = ".root__root,.root__swiperContainer{position:absolute;z-index:1}.root__swiperWrapper{position:relative;z-index:1}.root__root,.root__swiperContainer{left:0;top:0;width:100%;height:100%}.root__slide{display:flex;justify-content:center;align-items:center}.root__swiperWrapper{width:100%;height:100%;box-sizing:initial;transition-property:transform}.root__slide{flex-direction:column;overflow:hidden}";
-  var style = {"root":"root__root","swiperContainer":"root__swiperContainer","swiperWrapper":"root__swiperWrapper","slide":"root__slide"};
+  var css_248z$1 = ".root__root,.root__swiperContainer{position:absolute;z-index:1}.root__swiperWrapper{position:relative;z-index:1}.root__root,.root__swiperContainer{left:0;top:0;width:100%;height:100%}.root__swiperWrapper{width:100%;height:100%;box-sizing:initial;transition-property:transform}";
+  var style = {"root":"root__root","swiperContainer":"root__swiperContainer","swiperWrapper":"root__swiperWrapper"};
   styleInject(css_248z$1);
 
   /**
@@ -336,6 +336,10 @@
     return _class;
   }())();
 
+  var css_248z$2 = ".page__page{display:flex;justify-content:center;align-items:center;flex-direction:column;overflow:hidden}";
+  var style$1 = {"page":"page__page"};
+  styleInject(css_248z$2);
+
   var _default = /*#__PURE__*/function () {
     /**
      * Page
@@ -359,7 +363,7 @@
       this.name = name;
       this.pageIndex = 0;
       this.page = document.createElement('div');
-      this.page.classList.add('swiper-slide', style.slide);
+      this.page.classList.add('swiper-slide', style$1.page);
       this.page.dataset.hash = this.name;
       this._renderHtml = renderHtml;
       this._pageEnter = pageEnter;
