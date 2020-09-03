@@ -136,52 +136,6 @@
 
   var functionToPromise$1 = /*@__PURE__*/getDefaultExportFromCjs(functionToPromise);
 
-  var CreateInstance = createCommonjsModule(function (module, exports) {
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports["default"] = void 0;
-  /**
-   * singleton constructor(design patterns)
-   * @returns {function(*=)}
-   * @constructor
-   */
-
-  var _default = function _default() {
-    var instance;
-    return function (newInstance) {
-      if (newInstance) {
-        instance = newInstance;
-      }
-
-      return instance;
-    };
-  };
-
-  exports["default"] = _default;
-  });
-
-  var CreateInstance$1 = /*@__PURE__*/getDefaultExportFromCjs(CreateInstance);
-
-  /**
-   * singleton
-   * @param Base
-   * @returns {*}
-   */
-
-  var _singleton = (function (Base) {
-    var instance = new CreateInstance$1();
-
-    if (instance()) {
-      return instance();
-    }
-
-    var base = new Base();
-    instance(base);
-    return base;
-  });
-
   var css_248z$1 = ".root__root,.root__swiperContainer{position:absolute;z-index:1}.root__swiperWrapper{position:relative;z-index:1}.root__root,.root__swiperContainer{left:0;top:0;width:100%;height:100%}.root__slide{display:flex;justify-content:center;align-items:center}.root__swiperWrapper{width:100%;height:100%;box-sizing:initial;transition-property:transform}.root__slide{flex-direction:column;overflow:hidden}";
   var style = {"root":"root__root","swiperContainer":"root__swiperContainer","swiperWrapper":"root__swiperWrapper","slide":"root__slide"};
   styleInject(css_248z$1);
@@ -197,7 +151,7 @@
     return "\n<div class=\"".concat(style.root, "\">\n  <div class=\"swiper-container ").concat(style.swiperContainer, "\">\n    <div class=\"swiper-wrapper ").concat(style.swiperWrapper, "\"></div>\n  </div>\n</div>\n");
   };
 
-  var root = _singleton( /*#__PURE__*/function () {
+  var root = new ( /*#__PURE__*/function () {
     function _class() {
       _classCallCheck(this, _class);
 
@@ -380,7 +334,7 @@
     }]);
 
     return _class;
-  }());
+  }())();
 
   var _default = /*#__PURE__*/function () {
     /**
@@ -516,7 +470,6 @@
   }();
 
   var Page = _default;
-  var singleton = _singleton;
   /**
    * init
    * @param Swiper
@@ -593,7 +546,6 @@
   exports.getPageByName = getPageByName;
   exports.h5Pages = h5Pages;
   exports.init = init;
-  exports.singleton = singleton;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
