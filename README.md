@@ -50,14 +50,6 @@ init({
 })
 ```
 
-#### `singleton(BaseClass)`: Turn base class to singleton mode
-```javascript
-import {singleton} from '@cycjimmy/h5-pages';
-
-const BaseClass = class {...};
-const instance = singleton(BaseClass);
-```
-
 #### `getPageByName(name)`: Get a single page by name
 #### `changePageTo(name)`: Jump to the page with the specified name
 
@@ -108,20 +100,6 @@ const page = new class extends Page {
 };
 ```
 
-##### `singleton(Page)`: Turn Page instance into singleton mode (recommended)
-```javascript
-import {Page, singleton} from '@cycjimmy/h5-pages';
-
-const page = singleton(class extends Page {
-  constructor() {
-    super({
-     name: 'page',
-     renderHtml: `page`,
-    });
-  }
-});
-```
-
 #### `Page` instance Properties
 * `name`: The name of the Page instance.
 * `root`: H5 root element. Same as `h5Pages.root`.
@@ -134,7 +112,7 @@ const page = singleton(class extends Page {
 
 To use via a CDN include this in your HTML:
 ```text
-<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@2/dist/h5-pages.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@3/dist/h5-pages.umd.min.js"></script>
 ```
 
 <!-- Links: -->

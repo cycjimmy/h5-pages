@@ -50,14 +50,6 @@ init({
 })
 ```
 
-#### `singleton(BaseClass)`: 将基类转换为单例模式
-```javascript
-import {singleton} from '@cycjimmy/h5-pages';
-
-const BaseClass = class {...};
-const instance = singleton(BaseClass);
-```
-
 #### `getPageByName(name)`: 通过名称获取单个页面
 #### `changePageTo(name)`: 跳转到指定名称的页面
 
@@ -108,20 +100,6 @@ const page = new class extends Page {
 };
 ```
 
-##### `singleton(Page)`: 将Page实例转化为单例模式(推荐)
-```javascript
-import {Page, singleton} from '@cycjimmy/h5-pages';
-
-const page = singleton(class extends Page {
-  constructor() {
-    super({
-     name: 'page',
-     renderHtml: `page`,
-    });
-  }
-});
-```
-
 #### `Page` 实例的属性
 * `name`: 该Page实例的名称
 * `root`: H5的根元素。同`h5Pages.root`
@@ -134,7 +112,7 @@ const page = singleton(class extends Page {
 
 使用CDN，请在HTML中添加:
 ```text
-<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@2/dist/h5-pages.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@3/dist/h5-pages.umd.min.js"></script>
 ```
 
 <!-- Links: -->

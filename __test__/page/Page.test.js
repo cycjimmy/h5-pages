@@ -1,12 +1,18 @@
 import Swiper from 'swiper';
 
-import { init, changePageTo } from '../src/index';
-import Page from '../src/page/Page';
+import { init, changePageTo } from '../../src';
+import Page from '../../src/page/Page';
 
-import testSingletonPage from '../__mocks__/testSingletonPage';
+import testSingletonPage from '../../__mocks__/mockSingletonPage';
 
 describe('Page default test', () => {
-  test('Page default test', (done) => {
+  it('empty page load test ', (done) => {
+    const testPage = new Page({});
+    testPage.pageLoaded();
+    setTimeout(done, 100);
+  });
+
+  it('Page default test', (done) => {
     const testPage1 = new Page({});
     const testPage2 = new Page({
       name: 'p2',

@@ -2,10 +2,8 @@ import './theme/base.scss';
 
 import _Page from './page/Page';
 import root from './root/root.ins';
-import _singleton from './tools/singleton';
 
 export const Page = _Page;
-export const singleton = _singleton;
 
 /**
  * init

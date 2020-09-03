@@ -62,7 +62,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@6/swiper-bundle.js"></script>
 <script src="./h5-pages.umd.js"></script>
 <script type="module">
-  const {Page, singleton, init, changePageTo} = h5Pages;
+  const {Page, init, changePageTo} = h5Pages;
 
   // Common Page
   const page1 = new Page({
@@ -81,7 +81,7 @@
   };
 
   // Singleton Page
-  const page3 = singleton(class extends Page {
+  const page3 = new class extends Page {
     constructor() {
       super({
         name: 'p3',
@@ -101,7 +101,7 @@
       super.eventBind();
       this.jumpToPage1Btn.addEventListener('click', () => changePageTo('p1'));
     }
-  });
+  };
 
   init({
     Swiper,
