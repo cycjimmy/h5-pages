@@ -473,7 +473,75 @@
     return _default;
   }();
 
+  var css_248z$3 = ".popup__popupWrapper{position:absolute;z-index:1;left:0;top:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;z-index:99;flex-direction:column;overflow:hidden}";
+  var style$2 = {"popupWrapper":"popup__popupWrapper"};
+  styleInject(css_248z$3);
+
+  var _default$1 = /*#__PURE__*/function () {
+    function _default() {
+      _classCallCheck(this, _default);
+
+      this.root = root.root;
+      this.popup = document.createElement('div');
+      this.popup.classList.add(style$2.popupWrapper);
+    }
+    /**
+     * load: You must Overwrite this function with your own function
+     * @returns {Promise<void>}
+     */
+    // eslint-disable-next-line class-methods-use-this
+
+
+    _createClass(_default, [{
+      key: "load",
+      value: function load() {
+        return Promise.resolve();
+      }
+      /**
+       * render
+       * @param htmlText
+       * @returns {Promise<void>}
+       */
+
+    }, {
+      key: "render",
+      value: function render() {
+        var _this = this;
+
+        var htmlText = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        return Promise.resolve().then(function () {
+          return functionToPromise$1(function () {
+            _this.popup.innerHTML = htmlText;
+          });
+        }).then(function () {
+          return functionToPromise$1(function () {
+            _this.root.appendChild(_this.popup);
+          });
+        });
+      }
+      /**
+       * remove popup
+       * @returns {Promise<void>}
+       */
+
+    }, {
+      key: "remove",
+      value: function remove() {
+        var _this2 = this;
+
+        return Promise.resolve().then(function () {
+          return functionToPromise$1(function () {
+            _this2.root.removeChild(_this2.popup);
+          });
+        });
+      }
+    }]);
+
+    return _default;
+  }();
+
   var Page = _default;
+  var Popup = _default$1;
   /**
    * init
    * @param Swiper
@@ -546,6 +614,7 @@
   };
 
   exports.Page = Page;
+  exports.Popup = Popup;
   exports.changePageTo = changePageTo;
   exports.getPageByName = getPageByName;
   exports.h5Pages = h5Pages;
