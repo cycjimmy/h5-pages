@@ -87,10 +87,32 @@ const page = new class extends Page {
     super({
      name: 'page',
      renderHtml: `<div class="page-wrapper">page</div>`,
+     pageEnter: () => console.log('enter page'),
+     pageLeave: () => console.log('leave page'),
+    });
+  }
+  
+  // paramInit(): [Option] Add your custom parameters.
+  paramInit() {
+    // In this function super.paramInit() must be called first.
+    super.paramInit();  
+
+    // It is recommended to place your custom parameters here.
+    this.oneCustomElement = this.page.querySelector(`.${_style.oneCustomElement}`);
+  }
+
+  // eventBind(): [Option] Add your custom event bindings.
+  eventBind() {
+    // In this function super.eventBind() must be called first.
+    super.eventBind();
+
+    // It is recommended to place custom event bindings here.
+    this.oneCustomElement.addEventListener('click', () => {
+      console.log('oneCustomElement clicked');
     });
   }
 
-  // extraRender: add your custom action When the page loaded
+  // extraRender(): [Option] Add your custom action When the page loaded.
   extraRender() {
     console.log('pageLoaded');
   }

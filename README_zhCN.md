@@ -87,10 +87,32 @@ const page = new class extends Page {
     super({
      name: 'page',
      renderHtml: `<div class="page-wrapper">page</div>`,
+     pageEnter: () => console.log('进入页面'),
+     pageLeave: () => console.log('离开页面'), 
     });
   }
 
-  // extraRender: 当页面加载完毕时，增加你自定义的操作
+  // paramInit(): [可选] 添加你的自定义参数.
+  paramInit() {
+    // 在此方法中必须先调用super.paramInit()
+    super.paramInit();  
+
+    // 建议在此处放置自定义参数.
+    this.oneCustomElement = this.page.querySelector(`.${_style.oneCustomElement}`);
+  }
+
+  // eventBind(): [可选] 添加你的自定义事件绑定.
+  eventBind() {
+    // 在此方法中必须先调用super.eventBind()
+    super.eventBind();
+
+    // 建议在此处放置自定义事件绑定.
+    this.oneCustomElement.addEventListener('click', () => {
+      console.log('oneCustomElement clicked');
+    });
+  }
+
+  // extraRender(): [可选] 当页面加载完毕时，增加你自定义的操作
   extraRender() {
     console.log('pageLoaded');
   }
