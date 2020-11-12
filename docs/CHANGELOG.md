@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/cycjimmy/h5-pages/compare/v3.1.0...v3.1.1) (2020-11-12)
+
+
+### Bug Fixes
+
+* upgrade dependencies and improve documents ([a016a53](https://github.com/cycjimmy/h5-pages/commit/a016a53d7e6d3ea970cfcedd9f33eca0a6adcbf3))
+
 # [3.1.0](https://github.com/cycjimmy/h5-pages/compare/v3.0.0...v3.1.0) (2020-09-03)
 
 
