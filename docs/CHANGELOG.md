@@ -1,3 +1,10 @@
+## [3.1.3](https://github.com/cycjimmy/h5-pages/compare/v3.1.2...v3.1.3) (2022-03-16)
+
+
+### Bug Fixes
+
+* compatible with swiper7+ ([f279084](https://github.com/cycjimmy/h5-pages/commit/f279084e4820ffca4956758a50f405578eb15b46))
+
 ## [3.1.2](https://github.com/cycjimmy/h5-pages/compare/v3.1.1...v3.1.2) (2022-03-16)
 
 
