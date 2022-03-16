@@ -1,3 +1,4 @@
+import isNumber from '@cycjimmy/awesome-js-funcs/cjs/judgeBasic/isNumber';
 import './theme/base.scss';
 
 import _Page from './page/Page';
@@ -42,15 +43,22 @@ export const getPageByName = (name) => root.getPages().filter((page) => page.nam
 /**
  * changePageTo
  * @param name
+ * @param speed
  */
-export const changePageTo = (name) => {
+export const changePageTo = (name, speed) => {
   const targetPage = getPageByName(name);
 
   if (!targetPage) {
     return;
   }
 
-  root.swiper.slideTo(targetPage.pageIndex);
+  const aParams = [targetPage.pageIndex];
+
+  if (isNumber(speed)) {
+    aParams.push(speed);
+  }
+
+  root.swiper.slideTo(...aParams);
 };
 
 /**

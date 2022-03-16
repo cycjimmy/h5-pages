@@ -44,6 +44,8 @@ describe('Page and page-related tests', () => {
       // changePageTo: coveralls
       changePageTo();
       changePageTo(testPageName);
+      changePageTo(testPageName, 0);
+      changePageTo(testPageName, 200);
 
       setTimeout(done, 500);
     });

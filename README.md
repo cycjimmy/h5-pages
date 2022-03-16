@@ -50,7 +50,9 @@ init({
 ```
 
 #### `getPageByName(name)`: Get a single page by name
-#### `changePageTo(name)`: Jump to the page with the specified name
+#### `changePageTo(name, speed)`: Jump to the page with the specified name
+* `name`: Page name.
+* `speed`: Transition duration (in ms).
 
 ### Use `h5Pages` to Get the Core Properties
 * `h5Pages.root`: H5 root element. Don't put pages like popups directly in `body`, it is recommended to use `root` as parent.

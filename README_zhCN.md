@@ -51,6 +51,9 @@ init({
 
 #### `getPageByName(name)`: 通过名称获取单个页面
 #### `changePageTo(name)`: 跳转到指定名称的页面
+#### `changePageTo(name, speed)`: 跳转到指定名称的页面
+* `name`: 页面名称.
+* `speed`: 切换的时间 (单位为毫秒).
 
 ### 使用 `h5Pages` 获取核心属性 
 * `h5Pages.root`: H5的根元素，添加弹窗之类的页面请不要直接写在body里，推荐以root作为父级
