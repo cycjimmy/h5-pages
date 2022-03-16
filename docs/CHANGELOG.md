@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/cycjimmy/h5-pages/compare/v3.1.3...v3.2.0) (2022-03-16)
+
+
+### Features
+
+* add `speed` parameter for changePageTo ([35173f5](https://github.com/cycjimmy/h5-pages/commit/35173f512da84e821d9a93b524055cf42e8e9208))
+
 ## [3.1.3](https://github.com/cycjimmy/h5-pages/compare/v3.1.2...v3.1.3) (2022-03-16)
 
 
