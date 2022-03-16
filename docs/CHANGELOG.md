@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/cycjimmy/h5-pages/compare/v3.1.1...v3.1.2) (2022-03-16)
+
+
+### Bug Fixes
+
+* update deps ([dd4647c](https://github.com/cycjimmy/h5-pages/commit/dd4647c48df4bed962dad733e67e122492c02c41))
+
 ## [3.1.1](https://github.com/cycjimmy/h5-pages/compare/v3.1.0...v3.1.1) (2020-11-12)
 
 
