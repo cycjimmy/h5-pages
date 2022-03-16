@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.h5Pages = {}));
-}(this, (function (exports) { 'use strict';
+})(this, (function (exports) { 'use strict';
 
   function styleInject(css, ref) {
     if (ref === void 0) ref = {};
@@ -33,8 +33,8 @@
     }
   }
 
-  var css_248z = "body,html{display:flex;position:relative;margin:0;padding:0}html{height:100%;width:100%}body{flex:1;overflow:hidden;margin:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}";
-  styleInject(css_248z);
+  var css_248z$3 = "body,html{display:flex;position:relative;margin:0;padding:0}html{height:100%;width:100%}body{flex:1;overflow:hidden;margin:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}";
+  styleInject(css_248z$3);
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -136,9 +136,9 @@
 
   var functionToPromise$1 = /*@__PURE__*/getDefaultExportFromCjs(functionToPromise);
 
-  var css_248z$1 = ".root__root,.root__swiperContainer{position:absolute;z-index:1}.root__swiperWrapper{position:relative;z-index:1}.root__root,.root__swiperContainer{left:0;top:0;width:100%;height:100%}.root__swiperWrapper{width:100%;height:100%;box-sizing:initial;transition-property:transform}";
-  var style = {"root":"root__root","swiperContainer":"root__swiperContainer","swiperWrapper":"root__swiperWrapper"};
-  styleInject(css_248z$1);
+  var css_248z$2 = ".root__root,.root__swiperContainer{position:absolute;z-index:1}.root__swiperWrapper{position:relative;z-index:1}.root__root,.root__swiperContainer{left:0;top:0;width:100%;height:100%}.root__swiperWrapper{width:100%;height:100%;box-sizing:initial;transition-property:transform}";
+  var style$2 = {"root":"root__root","swiperContainer":"root__swiperContainer","swiperWrapper":"root__swiperWrapper"};
+  styleInject(css_248z$2);
 
   /**
    * Root Template
@@ -248,9 +248,9 @@
       key: "_initRoot",
       value: function _initRoot() {
         this._temp.innerHTML = rootTemplate({
-          style: style
+          style: style$2
         });
-        this.root = this._temp.querySelector(".".concat(style.root));
+        this.root = this._temp.querySelector(".".concat(style$2.root));
         document.body.appendChild(this.root);
       }
       /**
@@ -266,9 +266,9 @@
 
         return Promise.resolve().then(function () {
           return functionToPromise$1(function () {
-            _this2.els.swiperContainer = _this2.root.querySelector(".".concat(style.swiperContainer));
+            _this2.els.swiperContainer = _this2.root.querySelector(".".concat(style$2.swiperContainer));
             _this2.els.swiperContainer.innerHTML += _this2._containerExtraHtml;
-            _this2.els.swiperWrapper = _this2.els.swiperContainer.querySelector(".".concat(style.swiperWrapper));
+            _this2.els.swiperWrapper = _this2.els.swiperContainer.querySelector(".".concat(style$2.swiperWrapper));
           }, 50);
         }) // renderPages
         .then(function () {
@@ -336,11 +336,11 @@
     return _class;
   }())();
 
-  var css_248z$2 = ".page__page{display:flex;justify-content:center;align-items:center;flex-direction:column;overflow:hidden}";
+  var css_248z$1 = ".page__page{display:flex;justify-content:center;align-items:center;flex-direction:column;overflow:hidden}";
   var style$1 = {"page":"page__page"};
-  styleInject(css_248z$2);
+  styleInject(css_248z$1);
 
-  var _default = /*#__PURE__*/function () {
+  var _default$1 = /*#__PURE__*/function () {
     /**
      * Page
      * @param name
@@ -473,17 +473,17 @@
     return _default;
   }();
 
-  var css_248z$3 = ".popup__popupWrapper{position:absolute;z-index:1;left:0;top:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;z-index:99;flex-direction:column;overflow:hidden}";
-  var style$2 = {"popupWrapper":"popup__popupWrapper"};
-  styleInject(css_248z$3);
+  var css_248z = ".popup__popupWrapper{position:absolute;z-index:1;left:0;top:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;z-index:99;flex-direction:column;overflow:hidden}";
+  var style = {"popupWrapper":"popup__popupWrapper"};
+  styleInject(css_248z);
 
-  var _default$1 = /*#__PURE__*/function () {
+  var _default = /*#__PURE__*/function () {
     function _default() {
       _classCallCheck(this, _default);
 
       this.root = root.root;
       this.popup = document.createElement('div');
-      this.popup.classList.add(style$2.popupWrapper);
+      this.popup.classList.add(style.popupWrapper);
     }
     /**
      * load: You must Overwrite this function with your own function
@@ -540,8 +540,8 @@
     return _default;
   }();
 
-  var Page = _default;
-  var Popup = _default$1;
+  var Page = _default$1;
+  var Popup = _default;
   /**
    * init
    * @param Swiper
@@ -622,4 +622,4 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));
