@@ -7,9 +7,9 @@ import postcss from 'rollup-plugin-postcss';
 import autoprefixer from 'autoprefixer';
 import { terser } from 'rollup-plugin-terser';
 
-import myBanner from '@cycjimmy/config-lib/chore/myBanner';
+import myBanner from '@cycjimmy/config-lib/cjs/chore/myBanner';
 // config
-import terserOption from '@cycjimmy/config-lib/terser/4.x/production';
+import terserOption from '@cycjimmy/config-lib/cjs/terser/4.x/production';
 
 import pkg from '../package.json';
 
