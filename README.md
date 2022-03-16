@@ -1,6 +1,5 @@
 # H5 Pages
 ![][workflows-badge-image]
-[![build status][travis-image]][travis-url]
 [![libraries dependency status][libraries-status-image]][libraries-status-url]
 [![libraries sourcerank][libraries-sourcerank-image]][libraries-sourcerank-url]
 [![Coverage Status][coverage-image]][coverage-url]
@@ -177,8 +176,6 @@ To use via a CDN include this in your HTML:
 [jsdelivr-url]: https://www.jsdelivr.com/package/npm/@cycjimmy/h5-pages
 
 [workflows-badge-image]: https://github.com/cycjimmy/h5-pages/workflows/Test%20CI/badge.svg
-[travis-image]: https://img.shields.io/travis/cycjimmy/h5-pages
-[travis-url]: https://travis-ci.org/cycjimmy/h5-pages
 
 [libraries-status-image]: https://img.shields.io/librariesio/release/npm/@cycjimmy/h5-pages
 [libraries-sourcerank-image]: https://img.shields.io/librariesio/sourcerank/npm/@cycjimmy/h5-pages
