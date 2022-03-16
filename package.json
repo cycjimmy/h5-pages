@@ -56,7 +56,7 @@
     "babel-jest": "^26.6.3",
     "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
-    "eslint": "^7.13.0",
+    "eslint": "^8.11.0",
     "eslint-config-rollup": "^0.1.0",
     "jest": "^27.5.1",
     "node-sass": "^7.0.0",
