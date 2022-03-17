@@ -1,4 +1,4 @@
-const makeCommonConfig = require('@cycjimmy/config-lib/cjs/semanticRelease/15.x/makeCommonConfig')
+const makeCommonConfig = require('@cycjimmy/config-lib/cjs/semanticRelease/15.x/makeCommonConfig.cjs')
   .default;
 
 const pkg = require('./package.json');

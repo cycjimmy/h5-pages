@@ -1,11 +1,11 @@
-import browsersync from 'rollup-plugin-browsersync';
-import copy from 'rollup-plugin-copy';
+const browsersync = require('rollup-plugin-browsersync');
+const copy = require('rollup-plugin-copy');
 
-import pkg from '../package.json';
+const pkg = require('../package.json');
 
-import { input, IS_DEVELOPMENT, IS_DEPLOYMENT, name, plugins } from './rollup.common';
+const { input, IS_DEVELOPMENT, IS_DEPLOYMENT, name, plugins } = require('./rollup.common.cjs');
 
-export default [
+module.exports = [
   {
     input,
     output: {

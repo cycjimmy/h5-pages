@@ -1,8 +1,8 @@
-import pkg from '../package.json';
+const pkg = require('../package.json');
 
-import { banner, input, name, plugins, terserPlugins } from './rollup.common';
+const { banner, input, name, plugins, terserPlugins } = require('./rollup.common.cjs');
 
-export default [
+module.exports = [
   {
     input,
     output: [
