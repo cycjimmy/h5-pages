@@ -204,5 +204,5 @@ const Popup = new class extends Popup {
 
 [github-pages-url]: https://cycjimmy.github.io/h5-pages/
 
-[Readme-url-En]: https://github.com/cycjimmy/h5-pages/blob/master/README.md
-[Readme-url-ZhCN]: https://github.com/cycjimmy/h5-pages/blob/master/README_zhCN.md
+[Readme-url-En]: https://github.com/cycjimmy/h5-pages/blob/main/README.md
+[Readme-url-ZhCN]: https://github.com/cycjimmy/h5-pages/blob/main/README_zhCN.md

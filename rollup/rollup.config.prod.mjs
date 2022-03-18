@@ -1,6 +1,6 @@
-import pkg from '../package.json';
+import pkg from './package.cjs';
 
-import { banner, input, name, plugins, terserPlugins } from './rollup.common';
+import { banner, input, name, plugins, terserPlugins } from './rollup.common.mjs';
 
 export default [
   {

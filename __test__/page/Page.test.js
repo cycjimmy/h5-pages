@@ -16,7 +16,9 @@ describe('Page default test', () => {
     const testPage1 = new Page({});
     const testPage2 = new Page({
       name: 'p2',
+      // eslint-disable-next-line no-console
       pageEnter: () => console.log('pageEnter'),
+      // eslint-disable-next-line no-console
       pageLeave: () => console.log('pageLeave')
     });
 

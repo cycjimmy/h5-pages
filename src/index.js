@@ -1,4 +1,4 @@
-import isNumber from '@cycjimmy/awesome-js-funcs/cjs/judgeBasic/isNumber';
+import isNumber from '@cycjimmy/awesome-js-funcs/esm/judgeBasic/isNumber';
 import './theme/base.scss';
 
 import _Page from './page/Page';

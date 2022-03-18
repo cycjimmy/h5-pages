@@ -1,9 +1,10 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 import browsersync from 'rollup-plugin-browsersync';
 import copy from 'rollup-plugin-copy';
 
-import pkg from '../package.json';
+import pkg from './package.cjs';
 
-import { input, IS_DEVELOPMENT, IS_DEPLOYMENT, name, plugins } from './rollup.common';
+import { input, IS_DEVELOPMENT, IS_DEPLOYMENT, name, plugins } from './rollup.common.mjs';
 
 export default [
   {
