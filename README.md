@@ -163,7 +163,7 @@ const Popup = new class extends Popup {
 
 To use via a CDN include this in your HTML:
 ```text
-<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@3/dist/h5-pages.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@4/dist/h5-pages.umd.min.js"></script>
 ```
 
 <!-- Links: -->

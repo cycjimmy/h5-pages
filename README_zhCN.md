@@ -164,7 +164,7 @@ const Popup = new class extends Popup {
 
 使用CDN，请在HTML中添加:
 ```text
-<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@3/dist/h5-pages.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@4/dist/h5-pages.umd.min.js"></script>
 ```
 
 <!-- Links: -->
