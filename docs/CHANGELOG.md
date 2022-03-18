@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/cycjimmy/h5-pages/compare/v3.2.0...v4.0.0) (2022-03-18)
+
+
+### Features
+
+* change to module mode ([ba50689](https://github.com/cycjimmy/h5-pages/commit/ba506892857f724e5c88d0b6db35270b2c86116f))
+
+
+### BREAKING CHANGES
+
+* change to module mode
+
 # [3.2.0](https://github.com/cycjimmy/h5-pages/compare/v3.1.3...v3.2.0) (2022-03-16)
 
 
