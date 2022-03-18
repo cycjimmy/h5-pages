@@ -12,7 +12,9 @@ export default class {
    * @param pageEnter
    * @param pageLeave
    */
-  constructor({ name = '', renderHtml = '', pageEnter = () => {}, pageLeave = () => {} }) {
+  constructor({
+    name = '', renderHtml = '', pageEnter = () => {}, pageLeave = () => {},
+  }) {
     this.name = name;
     this.pageIndex = 0;
 
@@ -46,15 +48,13 @@ export default class {
    * @returns {Q.Promise<any> | Promise<void> | PromiseLike<any>}
    */
   init(pageIndex) {
-    return this._render().then(() =>
-      functionToPromise(() => {
-        this.pageIndex = pageIndex;
-        if (!this.name) {
-          this.name = `page${this.pageIndex}`;
-          this.page.dataset.hash = this.name;
-        }
-      })
-    );
+    return this._render().then(() => functionToPromise(() => {
+      this.pageIndex = pageIndex;
+      if (!this.name) {
+        this.name = `page${this.pageIndex}`;
+        this.page.dataset.hash = this.name;
+      }
+    }));
   }
 
   // eslint-disable-next-line class-methods-use-this

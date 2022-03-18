@@ -6,10 +6,10 @@ const pkg = require('./package.json');
 
 module.exports = makeCommonConfig({
   githubOptions: {
-    assets: [pkg.browser]
+    assets: [pkg.browser],
   },
   exec: true,
   execOptions: {
-    publishCmd: 'npm run build'
-  }
+    publishCmd: 'npm run build',
+  },
 });

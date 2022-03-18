@@ -1,15 +1,18 @@
+/* eslint import/extensions: ["error", "ignorePackages", {"mjs": off}] */
 import pkg from './package.cjs';
 
-import { banner, input, name, plugins, terserPlugins } from './rollup.common.mjs';
+import {
+  banner, input, name, plugins, terserPlugins,
+} from './rollup.common.mjs';
 
 export default [
   {
     input,
     output: [
       { file: pkg.main, format: 'cjs', exports: 'named' },
-      { file: pkg.module, format: 'es', exports: 'named' }
+      { file: pkg.module, format: 'es', exports: 'named' },
     ],
-    plugins
+    plugins,
   },
   {
     input,
@@ -18,8 +21,8 @@ export default [
       file: pkg.browser,
       format: 'umd',
       banner,
-      exports: 'named'
+      exports: 'named',
     },
-    plugins: [...plugins, terserPlugins]
-  }
+    plugins: [...plugins, terserPlugins],
+  },
 ];

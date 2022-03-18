@@ -1,3 +1,4 @@
+/* eslint no-undef: off */
 import Popup from '../../src/popup/Popup';
 
 describe('Popup default test', () => {

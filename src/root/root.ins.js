@@ -92,28 +92,22 @@ export default new (class {
   _initSwiper() {
     return (
       Promise.resolve()
-        .then(() =>
-          functionToPromise(() => {
-            this.els.swiperContainer = this.root.querySelector(`.${style.swiperContainer}`);
-            this.els.swiperContainer.innerHTML += this._containerExtraHtml;
-            this.els.swiperWrapper = this.els.swiperContainer.querySelector(
-              `.${style.swiperWrapper}`
-            );
-          }, 50)
-        )
+        .then(() => functionToPromise(() => {
+          this.els.swiperContainer = this.root.querySelector(`.${style.swiperContainer}`);
+          this.els.swiperContainer.innerHTML += this._containerExtraHtml;
+          this.els.swiperWrapper = this.els.swiperContainer.querySelector(
+            `.${style.swiperWrapper}`,
+          );
+        }, 50))
         // renderPages
         .then(() => Promise.all(this._pages.map((page, index) => page.init(index))))
-        .then(() =>
-          functionToPromise(() => {
-            this.swiper = new this._Swiper(this.els.swiperContainer, this._swiperOptions);
-          })
-        )
-        .then(() =>
-          functionToPromise(() => {
-            // pagesLoaded
-            this._pages.forEach((page) => page.pageLoaded());
-          }, 100)
-        )
+        .then(() => functionToPromise(() => {
+          this.swiper = new this._Swiper(this.els.swiperContainer, this._swiperOptions);
+        }))
+        .then(() => functionToPromise(() => {
+          // pagesLoaded
+          this._pages.forEach((page) => page.pageLoaded());
+        }, 100))
     );
   }
 
@@ -132,15 +126,15 @@ export default new (class {
         e.preventDefault();
       },
       {
-        passive: false
-      }
+        passive: false,
+      },
     );
 
     // fix ios soft keyboard
     window.addEventListener('resize', () => {
       if (
-        document.activeElement.tagName !== 'INPUT' &&
-        document.activeElement.tagName !== 'TEXTAREA'
+        document.activeElement.tagName !== 'INPUT'
+        && document.activeElement.tagName !== 'TEXTAREA'
       ) {
         return;
       }

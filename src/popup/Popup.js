@@ -27,16 +27,12 @@ export default class {
    */
   render(htmlText = '') {
     return Promise.resolve()
-      .then(() =>
-        functionToPromise(() => {
-          this.popup.innerHTML = htmlText;
-        })
-      )
-      .then(() =>
-        functionToPromise(() => {
-          this.root.appendChild(this.popup);
-        })
-      );
+      .then(() => functionToPromise(() => {
+        this.popup.innerHTML = htmlText;
+      }))
+      .then(() => functionToPromise(() => {
+        this.root.appendChild(this.popup);
+      }));
   }
 
   /**
@@ -44,10 +40,8 @@ export default class {
    * @returns {Promise<void>}
    */
   remove() {
-    return Promise.resolve().then(() =>
-      functionToPromise(() => {
-        this.root.removeChild(this.popup);
-      })
-    );
+    return Promise.resolve().then(() => functionToPromise(() => {
+      this.root.removeChild(this.popup);
+    }));
   }
 }

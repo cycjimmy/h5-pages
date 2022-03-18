@@ -16,7 +16,9 @@ export const Popup = _Popup;
  * @param containerExtraHtml
  * @returns {Promise<*>}
  */
-export const init = ({ Swiper, pages = [], swiperOptions = {}, containerExtraHtml = '' } = {}) => {
+export const init = ({
+  Swiper, pages = [], swiperOptions = {}, containerExtraHtml = '',
+} = {}) => {
   if (Swiper) {
     root.setSwiperConstructor(Swiper);
   } else if (window.Swiper) {
@@ -72,5 +74,5 @@ export const h5Pages = {
 
   get swiper() {
     return root.swiper;
-  }
+  },
 };

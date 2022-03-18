@@ -1,3 +1,4 @@
+/* eslint no-undef: off */
 import Swiper from 'swiper';
 
 import { init, changePageTo } from '../../src';
@@ -19,15 +20,15 @@ describe('Page default test', () => {
       // eslint-disable-next-line no-console
       pageEnter: () => console.log('pageEnter'),
       // eslint-disable-next-line no-console
-      pageLeave: () => console.log('pageLeave')
+      pageLeave: () => console.log('pageLeave'),
     });
 
     init({
       Swiper,
       pages: [testPage1, testPage2, testSingletonPage],
       swiperOptions: {
-        speed: 0
-      }
+        speed: 0,
+      },
     }).then(() => {
       expect(testPage1.name).toBe('page0');
       expect(testPage2.name).toBe('p2');

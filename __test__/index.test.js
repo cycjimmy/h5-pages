@@ -1,6 +1,9 @@
+/* eslint no-undef: off */
 import Swiper from 'swiper';
 
-import { h5Pages, init, Page, getPageByName, changePageTo } from '../src/index';
+import {
+  h5Pages, init, Page, getPageByName, changePageTo,
+} from '../src/index';
 import testSingletonPage from '../__mocks__/mockSingletonPage';
 
 describe('init default test', () => {
@@ -20,7 +23,7 @@ describe('init default test', () => {
       Swiper,
       pages: [],
       swiperOptions: {},
-      containerExtraHtml: ''
+      containerExtraHtml: '',
     });
   });
 });
@@ -28,13 +31,13 @@ describe('init default test', () => {
 describe('Page and page-related tests', () => {
   const testPageName = 'testPage';
   const testPage = new Page({
-    name: testPageName
+    name: testPageName,
   });
 
   test('testPage default test', (done) => {
     init({
       Swiper,
-      pages: [testPage, testSingletonPage]
+      pages: [testPage, testSingletonPage],
     }).then(() => {
       expect(testPage.name).toBe(testPageName);
       expect(testPage.root).toBe(h5Pages.root);

@@ -1,6 +1,6 @@
 /* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 /* eslint import/extensions: ["error", "ignorePackages", {"js": off}] */
-import { eslint } from 'rollup-plugin-eslint';
+import eslint from '@rollup/plugin-eslint';
 import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
@@ -26,19 +26,19 @@ export const plugins = [
   json(),
   postcss({
     modules: {
-      generateScopedName: IS_PRODUCTION ? '[hash:base64:10]' : '[name]__[local]'
+      generateScopedName: IS_PRODUCTION ? '[hash:base64:10]' : '[name]__[local]',
     },
     autoModules: false,
     minimize: true,
-    plugins: [autoprefixer]
+    plugins: [autoprefixer],
   }),
   eslint({
     fix: true,
-    exclude: ['**/*.(css|scss)']
+    exclude: ['**/*.(css|scss)'],
   }),
   resolve(),
   babel({ babelHelpers: 'bundled' }),
-  commonjs()
+  commonjs(),
 ];
 
 export const terserPlugins = IS_PRODUCTION && terser(terserOption);
