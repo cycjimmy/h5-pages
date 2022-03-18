@@ -12,11 +12,11 @@
     "coveralls": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --color --forceExit --detectOpenHandles --coverage",
     "lint": "eslint --ext .js,.cjs,.mjs -c .eslintrc .",
     "lint:fix": "eslint --ext .js,.cjs,.mjs --fix -c .eslintrc . --fix",
-    "dev": "cross-env NODE_ENV=development rollup -c rollup/rollup.config.dev.cjs --watch",
+    "dev": "cross-env NODE_ENV=development rollup -c rollup/rollup.config.dev.mjs --watch",
     "build": "npm run build:prod:umd && npm run build:prod",
-    "build:prod": "cross-env NODE_ENV=production rollup -c rollup/rollup.config.prod.cjs",
-    "build:prod:umd": "cross-env NODE_ENV=production rollup -c rollup/rollup.config.dev.cjs",
-    "build:deployment": "cross-env NODE_ENV=deployment rollup -c rollup/rollup.config.dev.cjs"
+    "build:prod": "cross-env NODE_ENV=production rollup -c rollup/rollup.config.prod.mjs",
+    "build:prod:umd": "cross-env NODE_ENV=production rollup -c rollup/rollup.config.dev.mjs",
+    "build:deployment": "cross-env NODE_ENV=deployment rollup -c rollup/rollup.config.dev.mjs"
   },
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@cycjimmy/awesome-js-funcs": "^4.0.1",
+    "@cycjimmy/awesome-js-funcs": "^4.0.2",
     "@cycjimmy/sass-lib": "^1.1.0"
   },
   "devDependencies": {

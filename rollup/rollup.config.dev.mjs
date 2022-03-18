@@ -1,11 +1,12 @@
-const browsersync = require('rollup-plugin-browsersync');
-const copy = require('rollup-plugin-copy');
+/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
+import browsersync from 'rollup-plugin-browsersync';
+import copy from 'rollup-plugin-copy';
 
-const pkg = require('../package.json');
+import pkg from './package.cjs';
 
-const { input, IS_DEVELOPMENT, IS_DEPLOYMENT, name, plugins } = require('./rollup.common.cjs');
+import { input, IS_DEVELOPMENT, IS_DEPLOYMENT, name, plugins } from './rollup.common.mjs';
 
-module.exports = [
+export default [
   {
     input,
     output: {
