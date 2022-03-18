@@ -4,6 +4,13 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.h5Pages = {}));
 })(this, (function (exports) { 'use strict';
 
+  /**
+   * determine a number type
+   * @param num
+   * @returns {boolean}
+   */
+  var isNumber = (num => Object.prototype.toString.call(num).slice(8, -1) === 'Number');
+
   function styleInject(css, ref) {
     if (ref === void 0) ref = {};
     var insertAt = ref.insertAt;
@@ -33,7 +40,7 @@
     }
   }
 
-  var css_248z$3 = "body,html{display:flex;position:relative;margin:0;padding:0}html{height:100%;width:100%}body{flex:1;overflow:hidden;margin:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}";
+  var css_248z$3 = "body,html{display:flex;margin:0;padding:0;position:relative}html{height:100%;width:100%}body{flex:1;margin:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);overflow:hidden}";
   styleInject(css_248z$3);
 
   function _classCallCheck(instance, Constructor) {
@@ -55,60 +62,19 @@
   function _createClass(Constructor, protoProps, staticProps) {
     if (protoProps) _defineProperties(Constructor.prototype, protoProps);
     if (staticProps) _defineProperties(Constructor, staticProps);
+    Object.defineProperty(Constructor, "prototype", {
+      writable: false
+    });
     return Constructor;
   }
 
-  function getDefaultExportFromCjs (x) {
-  	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-  }
-
-  function createCommonjsModule(fn, basedir, module) {
-  	return module = {
-  		path: basedir,
-  		exports: {},
-  		require: function (path, base) {
-  			return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
-  		}
-  	}, fn(module, module.exports), module.exports;
-  }
-
-  function commonjsRequire () {
-  	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
-  }
-
-  var isPromise = createCommonjsModule(function (module, exports) {
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports["default"] = void 0;
   /**
    * determine a promise type
    * @param promise
    * @returns {boolean}
    */
+  var isPromise = (promise => Object.prototype.toString.call(promise).slice(8, -1) === 'Promise');
 
-  var _default = function _default(promise) {
-    return Object.prototype.toString.call(promise).slice(8, -1) === 'Promise';
-  };
-
-  exports["default"] = _default;
-  });
-
-  var functionToPromise = createCommonjsModule(function (module, exports) {
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports["default"] = void 0;
-
-  var _isPromise = _interopRequireDefault(isPromise);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      "default": obj
-    };
-  }
   /**
    * function to promise
    * @param normalFunction
@@ -116,27 +82,21 @@
    * @returns {Promise<any>}
    */
 
-
-  var _default = function _default(normalFunction) {
+  var functionToPromise = (function (normalFunction) {
     var timeout = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
-    if ((0, _isPromise["default"])(normalFunction)) {
+    if (isPromise(normalFunction)) {
       return normalFunction;
     } // eslint-disable-next-line no-undef
 
 
-    return new Promise(function (resolve) {
+    return new Promise(resolve => {
       normalFunction();
       setTimeout(resolve, timeout);
     });
-  };
-
-  exports["default"] = _default;
   });
 
-  var functionToPromise$1 = /*@__PURE__*/getDefaultExportFromCjs(functionToPromise);
-
-  var css_248z$2 = ".root__root,.root__swiperContainer{position:absolute;z-index:1}.root__swiperWrapper{position:relative;z-index:1}.root__root,.root__swiperContainer{left:0;top:0;width:100%;height:100%}.root__swiperWrapper{width:100%;height:100%;box-sizing:initial;transition-property:transform}";
+  var css_248z$2 = ".root__root,.root__swiperContainer{position:absolute;z-index:1}.root__swiperWrapper{position:relative;z-index:1}.root__root,.root__swiperContainer{height:100%;left:0;top:0;width:100%}.root__swiperWrapper{box-sizing:initial;height:100%;transition-property:transform;width:100%}";
   var style$2 = {"root":"root__root","swiperContainer":"root__swiperContainer","swiperWrapper":"root__swiperWrapper"};
   styleInject(css_248z$2);
 
@@ -148,7 +108,7 @@
   // eslint-disable-next-line import/prefer-default-export
   var rootTemplate = function rootTemplate(_ref) {
     var style = _ref.style;
-    return "\n<div class=\"".concat(style.root, "\">\n  <div class=\"swiper-container ").concat(style.swiperContainer, "\">\n    <div class=\"swiper-wrapper ").concat(style.swiperWrapper, "\"></div>\n  </div>\n</div>\n");
+    return "\n<div class=\"".concat(style.root, "\">\n  <div class=\"swiper swiper-container ").concat(style.swiperContainer, "\">\n    <div class=\"swiper-wrapper ").concat(style.swiperWrapper, "\"></div>\n  </div>\n</div>\n");
   };
 
   var root = new ( /*#__PURE__*/function () {
@@ -265,7 +225,7 @@
         var _this2 = this;
 
         return Promise.resolve().then(function () {
-          return functionToPromise$1(function () {
+          return functionToPromise(function () {
             _this2.els.swiperContainer = _this2.root.querySelector(".".concat(style$2.swiperContainer));
             _this2.els.swiperContainer.innerHTML += _this2._containerExtraHtml;
             _this2.els.swiperWrapper = _this2.els.swiperContainer.querySelector(".".concat(style$2.swiperWrapper));
@@ -276,11 +236,11 @@
             return page.init(index);
           }));
         }).then(function () {
-          return functionToPromise$1(function () {
+          return functionToPromise(function () {
             _this2.swiper = new _this2._Swiper(_this2.els.swiperContainer, _this2._swiperOptions);
           });
         }).then(function () {
-          return functionToPromise$1(function () {
+          return functionToPromise(function () {
             // pagesLoaded
             _this2._pages.forEach(function (page) {
               return page.pageLoaded();
@@ -336,7 +296,7 @@
     return _class;
   }())();
 
-  var css_248z$1 = ".page__page{display:flex;justify-content:center;align-items:center;flex-direction:column;overflow:hidden}";
+  var css_248z$1 = ".page__page{align-items:center;display:flex;flex-direction:column;justify-content:center;overflow:hidden}";
   var style$1 = {"page":"page__page"};
   styleInject(css_248z$1);
 
@@ -401,7 +361,7 @@
         var _this = this;
 
         return this._render().then(function () {
-          return functionToPromise$1(function () {
+          return functionToPromise(function () {
             _this.pageIndex = pageIndex;
 
             if (!_this.name) {
@@ -436,7 +396,7 @@
       value: function _render() {
         var _this2 = this;
 
-        return functionToPromise$1(function () {
+        return functionToPromise(function () {
           _this2.page.innerHTML = _this2._renderHtml;
           root.els.swiperWrapper.appendChild(_this2.page);
         });
@@ -473,7 +433,7 @@
     return _default;
   }();
 
-  var css_248z = ".popup__popupWrapper{position:absolute;z-index:1;left:0;top:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;z-index:99;flex-direction:column;overflow:hidden}";
+  var css_248z = ".popup__popupWrapper{align-items:center;display:flex;flex-direction:column;height:100%;justify-content:center;left:0;overflow:hidden;position:absolute;top:0;width:100%;z-index:1;z-index:99}";
   var style = {"popupWrapper":"popup__popupWrapper"};
   styleInject(css_248z);
 
@@ -510,11 +470,11 @@
 
         var htmlText = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
         return Promise.resolve().then(function () {
-          return functionToPromise$1(function () {
+          return functionToPromise(function () {
             _this.popup.innerHTML = htmlText;
           });
         }).then(function () {
-          return functionToPromise$1(function () {
+          return functionToPromise(function () {
             _this.root.appendChild(_this.popup);
           });
         });
@@ -530,7 +490,7 @@
         var _this2 = this;
 
         return Promise.resolve().then(function () {
-          return functionToPromise$1(function () {
+          return functionToPromise(function () {
             _this2.root.removeChild(_this2.popup);
           });
         });
@@ -586,16 +546,25 @@
   /**
    * changePageTo
    * @param name
+   * @param speed
    */
 
-  var changePageTo = function changePageTo(name) {
+  var changePageTo = function changePageTo(name, speed) {
+    var _root$swiper;
+
     var targetPage = getPageByName(name);
 
     if (!targetPage) {
       return;
     }
 
-    root.swiper.slideTo(targetPage.pageIndex);
+    var aParams = [targetPage.pageIndex];
+
+    if (isNumber(speed)) {
+      aParams.push(speed);
+    }
+
+    (_root$swiper = root.swiper).slideTo.apply(_root$swiper, aParams);
   };
   /**
    * Get the Core Properties
