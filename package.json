@@ -8,8 +8,8 @@
   "browser": "dist/h5-pages.umd.min.js",
   "scripts": {
     "start": "npm run dev",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --color --forceExit --detectOpenHandles",
-    "coveralls": "NODE_OPTIONS=--experimental-vm-modules jest --color --forceExit --detectOpenHandles --coverage",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --color --forceExit --detectOpenHandles",
+    "coveralls": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --color --forceExit --detectOpenHandles --coverage",
     "lint": "eslint --ext .js,.cjs,.mjs -c .eslintrc .",
     "lint:fix": "eslint --ext .js,.cjs,.mjs --fix -c .eslintrc . --fix",
     "dev": "cross-env NODE_ENV=development rollup -c rollup/rollup.config.dev.cjs --watch",
