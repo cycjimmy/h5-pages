@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/cycjimmy/h5-pages/compare/v4.0.0...v4.1.0) (2022-03-25)
+
+
+### Features
+
+* refactoring build tasks ([c3c6009](https://github.com/cycjimmy/h5-pages/commit/c3c600963f7f19ab6e9edc6f7e219dcfed59f973))
+
 # [4.0.0](https://github.com/cycjimmy/h5-pages/compare/v3.2.0...v4.0.0) (2022-03-18)
 
 
