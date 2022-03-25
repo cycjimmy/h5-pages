@@ -1,3 +1,10 @@
+## [4.1.1](https://github.com/cycjimmy/h5-pages/compare/v4.1.0...v4.1.1) (2022-03-25)
+
+
+### Bug Fixes
+
+* upgrade deps ([71f4f18](https://github.com/cycjimmy/h5-pages/commit/71f4f1828d41f6f71112fd9652b3eee2f1f9030d))
+
 # [4.1.0](https://github.com/cycjimmy/h5-pages/compare/v4.0.0...v4.1.0) (2022-03-25)
 
 
