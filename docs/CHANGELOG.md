@@ -1,3 +1,10 @@
+## [4.1.2](https://github.com/cycjimmy/h5-pages/compare/v4.1.1...v4.1.2) (2022-03-26)
+
+
+### Bug Fixes
+
+* fix root version after releasing ([00be94f](https://github.com/cycjimmy/h5-pages/commit/00be94f64daf3ac5283d1911d899a0e081ea7e74))
+
 ## [4.1.1](https://github.com/cycjimmy/h5-pages/compare/v4.1.0...v4.1.1) (2022-03-25)
 
 

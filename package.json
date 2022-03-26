@@ -1,6 +1,6 @@
 {
   "name": "@cycjimmy/h5-pages",
-  "version": "4.0.0",
+  "version": "4.1.2",
   "description": "full h5 page plugin based on swiper",
   "type": "module",
   "main": "dist/h5-pages.cjs",
