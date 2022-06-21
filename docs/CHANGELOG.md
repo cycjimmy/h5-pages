@@ -1,3 +1,10 @@
+## [4.1.3](https://github.com/cycjimmy/h5-pages/compare/v4.1.2...v4.1.3) (2022-06-21)
+
+
+### Bug Fixes
+
+* remove @rollup/plugin-commonjs ([a9b81e4](https://github.com/cycjimmy/h5-pages/commit/a9b81e4d956219bad0e3a21ee83a3f5f020f0998))
+
 ## [4.1.2](https://github.com/cycjimmy/h5-pages/compare/v4.1.1...v4.1.2) (2022-03-26)
 
 
