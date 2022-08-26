@@ -40,7 +40,7 @@
     }
   }
 
-  var css_248z$3 = "body,html{display:flex;margin:0;padding:0;position:relative}html{height:100%;width:100%}body{flex:1;margin:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);overflow:hidden}";
+  var css_248z$3 = "body,html{display:flex;margin:0;padding:0;position:relative}html{height:100%;width:100%}body{flex:1;overflow:hidden}";
   styleInject(css_248z$3);
 
   function _classCallCheck(instance, Constructor) {
@@ -96,8 +96,8 @@
     });
   });
 
-  var css_248z$2 = ".root__root,.root__swiperContainer{position:absolute;z-index:1}.root__swiperWrapper{position:relative;z-index:1}.root__root,.root__swiperContainer{height:100%;left:0;top:0;width:100%}.root__swiperWrapper{box-sizing:initial;height:100%;transition-property:transform;width:100%}";
-  var style$2 = {"root":"root__root","swiperContainer":"root__swiperContainer","swiperWrapper":"root__swiperWrapper"};
+  var css_248z$2 = ".root__root,.root__swiperContainer{position:absolute;z-index:1}.root__swiperWrapper{position:relative;z-index:1}.root__root,.root__swiperContainer{height:100%;left:0;top:0;width:100%}body.root__compatibleWithSafeArea{margin:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}.root__swiperWrapper{box-sizing:initial;height:100%;transition-property:transform;width:100%}";
+  var style$2 = {"root":"root__root","swiperContainer":"root__swiperContainer","swiperWrapper":"root__swiperWrapper","compatibleWithSafeArea":"root__compatibleWithSafeArea"};
   styleInject(css_248z$2);
 
   /**
@@ -181,6 +181,21 @@
       key: "setContainerExtraHtml",
       value: function setContainerExtraHtml(containerExtraHtml) {
         this._containerExtraHtml = containerExtraHtml;
+        return this;
+      }
+      /**
+       * setCompatibleWithSafeArea
+       * @param compatibleWithSafeArea
+       */
+
+    }, {
+      key: "setCompatibleWithSafeArea",
+      value: function setCompatibleWithSafeArea(compatibleWithSafeArea) {
+        if (!compatibleWithSafeArea) {
+          return this;
+        }
+
+        document.body.classList.add(style$2.compatibleWithSafeArea);
         return this;
       }
       /**
@@ -508,6 +523,7 @@
    * @param pages
    * @param swiperOptions
    * @param containerExtraHtml
+   * @param compatibleWithSafeArea
    * @returns {Promise<*>}
    */
 
@@ -519,7 +535,9 @@
         _ref$swiperOptions = _ref.swiperOptions,
         swiperOptions = _ref$swiperOptions === void 0 ? {} : _ref$swiperOptions,
         _ref$containerExtraHt = _ref.containerExtraHtml,
-        containerExtraHtml = _ref$containerExtraHt === void 0 ? '' : _ref$containerExtraHt;
+        containerExtraHtml = _ref$containerExtraHt === void 0 ? '' : _ref$containerExtraHt,
+        _ref$compatibleWithSa = _ref.compatibleWithSafeArea,
+        compatibleWithSafeArea = _ref$compatibleWithSa === void 0 ? true : _ref$compatibleWithSa;
 
     if (Swiper) {
       root.setSwiperConstructor(Swiper);
@@ -529,7 +547,7 @@
       throw new Error('h5Pages.Swiper does not exist');
     }
 
-    root.setPages(pages).setSwiperOptions(swiperOptions).setContainerExtraHtml(containerExtraHtml);
+    root.setPages(pages).setSwiperOptions(swiperOptions).setContainerExtraHtml(containerExtraHtml).setCompatibleWithSafeArea(compatibleWithSafeArea);
     return root.init();
   };
   /**
