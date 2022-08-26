@@ -46,6 +46,7 @@ init({
       el: '.swiper-pagination',
     },
   },
+  compatibleWithSafeArea: true,                                 // Whether it is compatible with the safe area of screen. The default is true.
 })
 ```
 

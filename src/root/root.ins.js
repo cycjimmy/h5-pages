@@ -65,6 +65,19 @@ export default new (class {
   }
 
   /**
+   * setCompatibleWithSafeArea
+   * @param compatibleWithSafeArea
+   */
+  setCompatibleWithSafeArea(compatibleWithSafeArea) {
+    if (!compatibleWithSafeArea) {
+      return this;
+    }
+
+    document.body.classList.add(style.compatibleWithSafeArea);
+    return this;
+  }
+
+  /**
    * init
    * @returns {Promise<*>}
    */

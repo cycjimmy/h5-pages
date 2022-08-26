@@ -38,6 +38,7 @@ describe('Page and page-related tests', () => {
     init({
       Swiper,
       pages: [testPage, testSingletonPage],
+      compatibleWithSafeArea: false,
     }).then(() => {
       expect(testPage.name).toBe(testPageName);
       expect(testPage.root).toBe(h5Pages.root);

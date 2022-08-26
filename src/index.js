@@ -14,10 +14,11 @@ export const Popup = _Popup;
  * @param pages
  * @param swiperOptions
  * @param containerExtraHtml
+ * @param compatibleWithSafeArea
  * @returns {Promise<*>}
  */
 export const init = ({
-  Swiper, pages = [], swiperOptions = {}, containerExtraHtml = '',
+  Swiper, pages = [], swiperOptions = {}, containerExtraHtml = '', compatibleWithSafeArea = true,
 } = {}) => {
   if (Swiper) {
     root.setSwiperConstructor(Swiper);
@@ -30,7 +31,8 @@ export const init = ({
   root
     .setPages(pages)
     .setSwiperOptions(swiperOptions)
-    .setContainerExtraHtml(containerExtraHtml);
+    .setContainerExtraHtml(containerExtraHtml)
+    .setCompatibleWithSafeArea(compatibleWithSafeArea);
 
   return root.init();
 };

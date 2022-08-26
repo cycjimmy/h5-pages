@@ -46,6 +46,7 @@ init({
       el: '.swiper-pagination',
     },
   },
+  compatibleWithSafeArea: true,                                 // 是否兼容刘海屏的安全区，默认为ture
 })
 ```
 
