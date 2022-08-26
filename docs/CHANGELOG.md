@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/cycjimmy/h5-pages/compare/v4.1.3...v4.2.0) (2022-08-26)
+
+
+### Features
+
+* add the parameter `compatibleWithSafeArea` for the method `init()`; ([c3f7e5a](https://github.com/cycjimmy/h5-pages/commit/c3f7e5abc43b587dbc02266b3bfcdef7d2a91805))
+
 ## [4.1.3](https://github.com/cycjimmy/h5-pages/compare/v4.1.2...v4.1.3) (2022-06-21)
 
 
