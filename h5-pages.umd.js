@@ -14,15 +14,12 @@
   function styleInject(css, ref) {
     if (ref === void 0) ref = {};
     var insertAt = ref.insertAt;
-
     if (!css || typeof document === 'undefined') {
       return;
     }
-
     var head = document.head || document.getElementsByTagName('head')[0];
     var style = document.createElement('style');
     style.type = 'text/css';
-
     if (insertAt === 'top') {
       if (head.firstChild) {
         head.insertBefore(style, head.firstChild);
@@ -32,7 +29,6 @@
     } else {
       head.appendChild(style);
     }
-
     if (style.styleSheet) {
       style.styleSheet.cssText = css;
     } else {
@@ -48,7 +44,6 @@
       throw new TypeError("Cannot call a class as a function");
     }
   }
-
   function _defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
       var descriptor = props[i];
@@ -58,7 +53,6 @@
       Object.defineProperty(target, descriptor.key, descriptor);
     }
   }
-
   function _createClass(Constructor, protoProps, staticProps) {
     if (protoProps) _defineProperties(Constructor.prototype, protoProps);
     if (staticProps) _defineProperties(Constructor, staticProps);
@@ -84,11 +78,9 @@
 
   var functionToPromise = (function (normalFunction) {
     var timeout = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-
     if (isPromise(normalFunction)) {
       return normalFunction;
     } // eslint-disable-next-line no-undef
-
 
     return new Promise(resolve => {
       normalFunction();
@@ -114,7 +106,6 @@
   var root = new ( /*#__PURE__*/function () {
     function _class() {
       _classCallCheck(this, _class);
-
       this.root = null;
       this.swiper = null;
       this.els = {};
@@ -123,102 +114,97 @@
       this._swiperOptions = {};
       this._containerExtraHtml = '';
       this._pages = [];
-
       this._initH5DefaultEvent();
-
       this._initRoot();
     }
+
     /**
      * setSwiperConstructor
      * @param Swiper
      */
-
-
     _createClass(_class, [{
       key: "setSwiperConstructor",
       value: function setSwiperConstructor(Swiper) {
         this._Swiper = Swiper;
         return this;
       }
+
       /**
        * getPages
        * @returns {[]}
        */
-
     }, {
       key: "getPages",
       value: function getPages() {
         return this._pages;
       }
+
       /**
        * setPages
        * @param pages
        */
-
     }, {
       key: "setPages",
       value: function setPages(pages) {
         this._pages = pages;
         return this;
       }
+
       /**
        * setSwiperOptions
        * @param swiperOptions
        */
-
     }, {
       key: "setSwiperOptions",
       value: function setSwiperOptions(swiperOptions) {
         this._swiperOptions = swiperOptions;
         return this;
       }
+
       /**
        * setContainerExtraHtml
        * @param containerExtraHtml
        */
-
     }, {
       key: "setContainerExtraHtml",
       value: function setContainerExtraHtml(containerExtraHtml) {
         this._containerExtraHtml = containerExtraHtml;
         return this;
       }
+
       /**
        * setCompatibleWithSafeArea
        * @param compatibleWithSafeArea
        */
-
     }, {
       key: "setCompatibleWithSafeArea",
       value: function setCompatibleWithSafeArea(compatibleWithSafeArea) {
         if (!compatibleWithSafeArea) {
           return this;
         }
-
         document.body.classList.add(style$2.compatibleWithSafeArea);
         return this;
       }
+
       /**
        * init
        * @returns {Promise<*>}
        */
-
     }, {
       key: "init",
       value: function init() {
         var _this = this;
-
         return Promise.resolve().then(function () {
           return _this._initSwiper();
         }).then(function () {
           return _this.swiper.update();
         });
       }
+
       /**
        * Init Root Element
        * @private
        */
-
     }, {
       key: "_initRoot",
       value: function _initRoot() {
@@ -228,24 +214,24 @@
         this.root = this._temp.querySelector(".".concat(style$2.root));
         document.body.appendChild(this.root);
       }
+
       /**
        * Init Swiper
        * @returns {Promise<void>}
        * @private
        */
-
     }, {
       key: "_initSwiper",
       value: function _initSwiper() {
         var _this2 = this;
-
         return Promise.resolve().then(function () {
           return functionToPromise(function () {
             _this2.els.swiperContainer = _this2.root.querySelector(".".concat(style$2.swiperContainer));
             _this2.els.swiperContainer.innerHTML += _this2._containerExtraHtml;
             _this2.els.swiperWrapper = _this2.els.swiperContainer.querySelector(".".concat(style$2.swiperWrapper));
           }, 50);
-        }) // renderPages
+        })
+        // renderPages
         .then(function () {
           return Promise.all(_this2._pages.map(function (page, index) {
             return page.init(index);
@@ -263,30 +249,31 @@
           }, 100);
         });
       }
+
       /**
        * Init H5 Default Event
        * @private
        */
-
     }, {
       key: "_initH5DefaultEvent",
       value: function _initH5DefaultEvent() {
         // contextMenu preventDefault
         document.addEventListener('contextmenu', function (e) {
           return e.preventDefault();
-        }); // fix ios native scrolling
+        });
 
+        // fix ios native scrolling
         document.body.addEventListener('touchmove', function (e) {
           e.preventDefault();
         }, {
           passive: false
-        }); // fix ios soft keyboard
+        });
 
+        // fix ios soft keyboard
         window.addEventListener('resize', function () {
           if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
             return;
           }
-
           setTimeout(function () {
             if ('scrollIntoView' in document.activeElement) {
               document.activeElement.scrollIntoView(false);
@@ -297,17 +284,14 @@
         });
         window.addEventListener('focusout', function (e) {
           var target = e.target;
-
           if (target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA') {
             return;
           }
-
           window.scrollTo(0, 0);
         });
         return this;
       }
     }]);
-
     return _class;
   }())();
 
@@ -325,16 +309,14 @@
      */
     function _default(_ref) {
       var _ref$name = _ref.name,
-          name = _ref$name === void 0 ? '' : _ref$name,
-          _ref$renderHtml = _ref.renderHtml,
-          renderHtml = _ref$renderHtml === void 0 ? '' : _ref$renderHtml,
-          _ref$pageEnter = _ref.pageEnter,
-          pageEnter = _ref$pageEnter === void 0 ? function () {} : _ref$pageEnter,
-          _ref$pageLeave = _ref.pageLeave,
-          pageLeave = _ref$pageLeave === void 0 ? function () {} : _ref$pageLeave;
-
+        name = _ref$name === void 0 ? '' : _ref$name,
+        _ref$renderHtml = _ref.renderHtml,
+        renderHtml = _ref$renderHtml === void 0 ? '' : _ref$renderHtml,
+        _ref$pageEnter = _ref.pageEnter,
+        pageEnter = _ref$pageEnter === void 0 ? function () {} : _ref$pageEnter,
+        _ref$pageLeave = _ref.pageLeave,
+        pageLeave = _ref$pageLeave === void 0 ? function () {} : _ref$pageLeave;
       _classCallCheck(this, _default);
-
       this.name = name;
       this.pageIndex = 0;
       this.page = document.createElement('div');
@@ -344,56 +326,54 @@
       this._pageEnter = pageEnter;
       this._pageLeave = pageLeave;
     }
+
     /**
      * paramInit
      */
-
-
     _createClass(_default, [{
       key: "paramInit",
       value: function paramInit() {
         this.swiper = root.swiper;
         this.root = root.root;
       }
+
       /**
        * eventBind
        */
-
     }, {
       key: "eventBind",
       value: function eventBind() {
         this._setPageCommand();
       }
+
       /**
        * init
        * @param pageIndex
        * @returns {Q.Promise<any> | Promise<void> | PromiseLike<any>}
        */
-
     }, {
       key: "init",
       value: function init(pageIndex) {
         var _this = this;
-
         return this._render().then(function () {
           return functionToPromise(function () {
             _this.pageIndex = pageIndex;
-
             if (!_this.name) {
               _this.name = "page".concat(_this.pageIndex);
               _this.page.dataset.hash = _this.name;
             }
           });
         });
-      } // eslint-disable-next-line class-methods-use-this
+      }
 
+      // eslint-disable-next-line class-methods-use-this
     }, {
       key: "extraRender",
       value: function extraRender() {}
+
       /**
        * pageLoaded
        */
-
     }, {
       key: "pageLoaded",
       value: function pageLoaded() {
@@ -401,40 +381,36 @@
         this.eventBind();
         this.extraRender();
       }
+
       /**
        * _render
        * @private
        */
-
     }, {
       key: "_render",
       value: function _render() {
         var _this2 = this;
-
         return functionToPromise(function () {
           _this2.page.innerHTML = _this2._renderHtml;
           root.els.swiperWrapper.appendChild(_this2.page);
         });
       }
+
       /**
        * _setPageCommand: hook function
        * @private
        */
-
     }, {
       key: "_setPageCommand",
       value: function _setPageCommand() {
         var _this3 = this;
-
         if (!root.swiper) {
           return;
         }
-
         root.swiper.on('slideChange', function () {
           if (root.swiper.realIndex === _this3.pageIndex) {
             _this3._pageEnter(root.swiper);
           }
-
           if (root.swiper.previousIndex === _this3.pageIndex) {
             var delay = root.swiper.params.speed || 0;
             setTimeout(function () {
@@ -444,7 +420,6 @@
         });
       }
     }]);
-
     return _default;
   }();
 
@@ -455,34 +430,31 @@
   var _default = /*#__PURE__*/function () {
     function _default() {
       _classCallCheck(this, _default);
-
       this.root = root.root;
       this.popup = document.createElement('div');
       this.popup.classList.add(style.popupWrapper);
     }
+
     /**
      * load: You must Overwrite this function with your own function
      * @returns {Promise<void>}
      */
     // eslint-disable-next-line class-methods-use-this
-
-
     _createClass(_default, [{
       key: "load",
       value: function load() {
         return Promise.resolve();
       }
+
       /**
        * render
        * @param htmlText
        * @returns {Promise<void>}
        */
-
     }, {
       key: "render",
       value: function render() {
         var _this = this;
-
         var htmlText = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
         return Promise.resolve().then(function () {
           return functionToPromise(function () {
@@ -494,16 +466,15 @@
           });
         });
       }
+
       /**
        * remove popup
        * @returns {Promise<void>}
        */
-
     }, {
       key: "remove",
       value: function remove() {
         var _this2 = this;
-
         return Promise.resolve().then(function () {
           return functionToPromise(function () {
             _this2.root.removeChild(_this2.popup);
@@ -511,12 +482,12 @@
         });
       }
     }]);
-
     return _default;
   }();
 
   var Page = _default$1;
   var Popup = _default;
+
   /**
    * init
    * @param Swiper
@@ -526,19 +497,17 @@
    * @param compatibleWithSafeArea
    * @returns {Promise<*>}
    */
-
   var init = function init() {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        Swiper = _ref.Swiper,
-        _ref$pages = _ref.pages,
-        pages = _ref$pages === void 0 ? [] : _ref$pages,
-        _ref$swiperOptions = _ref.swiperOptions,
-        swiperOptions = _ref$swiperOptions === void 0 ? {} : _ref$swiperOptions,
-        _ref$containerExtraHt = _ref.containerExtraHtml,
-        containerExtraHtml = _ref$containerExtraHt === void 0 ? '' : _ref$containerExtraHt,
-        _ref$compatibleWithSa = _ref.compatibleWithSafeArea,
-        compatibleWithSafeArea = _ref$compatibleWithSa === void 0 ? true : _ref$compatibleWithSa;
-
+      Swiper = _ref.Swiper,
+      _ref$pages = _ref.pages,
+      pages = _ref$pages === void 0 ? [] : _ref$pages,
+      _ref$swiperOptions = _ref.swiperOptions,
+      swiperOptions = _ref$swiperOptions === void 0 ? {} : _ref$swiperOptions,
+      _ref$containerExtraHt = _ref.containerExtraHtml,
+      containerExtraHtml = _ref$containerExtraHt === void 0 ? '' : _ref$containerExtraHt,
+      _ref$compatibleWithSa = _ref.compatibleWithSafeArea,
+      compatibleWithSafeArea = _ref$compatibleWithSa === void 0 ? true : _ref$compatibleWithSa;
     if (Swiper) {
       root.setSwiperConstructor(Swiper);
     } else if (window.Swiper) {
@@ -546,58 +515,50 @@
     } else {
       throw new Error('h5Pages.Swiper does not exist');
     }
-
     root.setPages(pages).setSwiperOptions(swiperOptions).setContainerExtraHtml(containerExtraHtml).setCompatibleWithSafeArea(compatibleWithSafeArea);
     return root.init();
   };
+
   /**
    * getPageByName
    * @param name
    * @returns {*}
    */
-
   var getPageByName = function getPageByName(name) {
     return root.getPages().filter(function (page) {
       return page.name === name;
     })[0];
   };
+
   /**
    * changePageTo
    * @param name
    * @param speed
    */
-
   var changePageTo = function changePageTo(name, speed) {
     var _root$swiper;
-
     var targetPage = getPageByName(name);
-
     if (!targetPage) {
       return;
     }
-
     var aParams = [targetPage.pageIndex];
-
     if (isNumber(speed)) {
       aParams.push(speed);
     }
-
     (_root$swiper = root.swiper).slideTo.apply(_root$swiper, aParams);
   };
+
   /**
    * Get the Core Properties
    * @type {{readonly swiper: *, readonly root: *}}
    */
-
   var h5Pages = {
     get root() {
       return root.root;
     },
-
     get swiper() {
       return root.swiper;
     }
-
   };
 
   exports.Page = Page;
