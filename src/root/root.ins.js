@@ -16,6 +16,7 @@ export default new (class {
     this._containerExtraHtml = '';
     this._pages = [];
 
+    this._fixWechatFont();
     this._initH5DefaultEvent();
     this._initRoot();
   }
@@ -170,5 +171,30 @@ export default new (class {
     });
 
     return this;
+  }
+
+  /**
+   * Fix Wechat Font
+   * @private
+   */
+  // eslint-disable-next-line class-methods-use-this
+  _fixWechatFont() {
+    const handleFontSize = () => {
+      WeixinJSBridge.invoke('setFontSizeCallback', { fontSize: 0 });
+      WeixinJSBridge.on('menu:setfont', () => {
+        WeixinJSBridge.invoke('setFontSizeCallback', { fontSize: 0 });
+      });
+    };
+
+    if (
+      typeof WeixinJSBridge === 'object' && typeof WeixinJSBridge.invoke === 'function'
+    ) {
+      handleFontSize();
+    } else if (document.addEventListener) {
+      document.addEventListener('WeixinJSBridgeReady', handleFontSize, false);
+    } else if (document.attachEvent) {
+      document.attachEvent('WeixinJSBridgeReady', handleFontSize);
+      document.attachEvent('onWeixinJSBridgeReady', handleFontSize);
+    }
   }
 })();

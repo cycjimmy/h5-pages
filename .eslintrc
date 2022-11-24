@@ -5,6 +5,9 @@
     "browser": true,
     "node": true
   },
+  "globals": {
+    "WeixinJSBridge": "readonly"
+  },
   "rules": {
     "no-underscore-dangle": "off"
   }
