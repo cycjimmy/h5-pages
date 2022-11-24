@@ -1,3 +1,10 @@
+# [4.3.0](https://github.com/cycjimmy/h5-pages/compare/v4.2.0...v4.3.0) (2022-11-24)
+
+
+### Features
+
+* add wechat font fixing ([d61d387](https://github.com/cycjimmy/h5-pages/commit/d61d387fbc652bd573195bce9373c783fc60f0e8))
+
 # [4.2.0](https://github.com/cycjimmy/h5-pages/compare/v4.1.3...v4.2.0) (2022-08-26)
 
 
