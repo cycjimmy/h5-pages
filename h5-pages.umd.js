@@ -39,6 +39,15 @@
   var css_248z$3 = "body,html{display:flex;margin:0;padding:0;position:relative}html{height:100%;width:100%}body{flex:1;overflow:hidden}";
   styleInject(css_248z$3);
 
+  function _typeof(obj) {
+    "@babel/helpers - typeof";
+
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+      return typeof obj;
+    } : function (obj) {
+      return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    }, _typeof(obj);
+  }
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
@@ -114,6 +123,7 @@
       this._swiperOptions = {};
       this._containerExtraHtml = '';
       this._pages = [];
+      this._fixWechatFont();
       this._initH5DefaultEvent();
       this._initRoot();
     }
@@ -290,6 +300,34 @@
           window.scrollTo(0, 0);
         });
         return this;
+      }
+
+      /**
+       * Fix Wechat Font
+       * @private
+       */
+      // eslint-disable-next-line class-methods-use-this
+    }, {
+      key: "_fixWechatFont",
+      value: function _fixWechatFont() {
+        var handleFontSize = function handleFontSize() {
+          WeixinJSBridge.invoke('setFontSizeCallback', {
+            fontSize: 0
+          });
+          WeixinJSBridge.on('menu:setfont', function () {
+            WeixinJSBridge.invoke('setFontSizeCallback', {
+              fontSize: 0
+            });
+          });
+        };
+        if ((typeof WeixinJSBridge === "undefined" ? "undefined" : _typeof(WeixinJSBridge)) === 'object' && typeof WeixinJSBridge.invoke === 'function') {
+          handleFontSize();
+        } else if (document.addEventListener) {
+          document.addEventListener('WeixinJSBridgeReady', handleFontSize, false);
+        } else if (document.attachEvent) {
+          document.attachEvent('WeixinJSBridgeReady', handleFontSize);
+          document.attachEvent('onWeixinJSBridgeReady', handleFontSize);
+        }
       }
     }]);
     return _class;
