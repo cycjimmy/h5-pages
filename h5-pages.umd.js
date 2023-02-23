@@ -347,7 +347,7 @@
     return _class;
   }())();
 
-  var css_248z$1 = ".page__page{align-items:center;display:flex;flex-direction:column;justify-content:center;overflow:hidden}";
+  var css_248z$1 = ".page__page{align-items:center;flex-direction:column;justify-content:center;overflow:hidden}.page__page.swiper-slide{display:flex}";
   var style$1 = {"page":"page__page"};
   styleInject(css_248z$1);
 
