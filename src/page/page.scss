@@ -1,7 +1,11 @@
 @import "~@cycjimmy/sass-lib";
 
 .page {
-  @extend %flexCenter;
+  &:global(.swiper-slide) {
+    display: flex;
+  }
+
+  @include flex-box-align(center, center);
   flex-direction: column;
   overflow: hidden;
 }
