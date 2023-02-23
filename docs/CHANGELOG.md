@@ -1,3 +1,10 @@
+## [4.3.1](https://github.com/cycjimmy/h5-pages/compare/v4.3.0...v4.3.1) (2023-02-23)
+
+
+### Bug Fixes
+
+* update to swiper9 ([6da3728](https://github.com/cycjimmy/h5-pages/commit/6da3728f1b35f6ab074effe9ce68783bf41fe6ac))
+
 # [4.3.0](https://github.com/cycjimmy/h5-pages/compare/v4.2.0...v4.3.0) (2022-11-24)
 
 
