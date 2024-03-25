@@ -146,7 +146,7 @@
      * setSwiperConstructor
      * @param Swiper
      */
-    _createClass(_class, [{
+    return _createClass(_class, [{
       key: "setSwiperConstructor",
       value: function setSwiperConstructor(Swiper) {
         this._Swiper = Swiper;
@@ -344,7 +344,6 @@
         }
       }
     }]);
-    return _class;
   }())();
 
   var css_248z$1 = ".page__page{align-items:center;flex-direction:column;justify-content:center;overflow:hidden}.page__page.swiper-slide{display:flex}";
@@ -382,7 +381,7 @@
     /**
      * paramInit
      */
-    _createClass(_default, [{
+    return _createClass(_default, [{
       key: "paramInit",
       value: function paramInit() {
         this.swiper = root.swiper;
@@ -472,7 +471,6 @@
         });
       }
     }]);
-    return _default;
   }();
 
   var css_248z = ".popup__popupWrapper{align-items:center;display:flex;flex-direction:column;height:100%;justify-content:center;left:0;overflow:hidden;position:absolute;top:0;width:100%;z-index:1;z-index:99}";
@@ -492,7 +490,7 @@
      * @returns {Promise<void>}
      */
     // eslint-disable-next-line class-methods-use-this
-    _createClass(_default, [{
+    return _createClass(_default, [{
       key: "load",
       value: function load() {
         return Promise.resolve();
@@ -534,7 +532,6 @@
         });
       }
     }]);
-    return _default;
   }();
 
   var Page = _default$1;
