@@ -1,3 +1,10 @@
+## [4.3.2](https://github.com/cycjimmy/h5-pages/compare/v4.3.1...v4.3.2) (2024-07-17)
+
+
+### Bug Fixes
+
+* upgrade rollup to v4 ([e61cdb3](https://github.com/cycjimmy/h5-pages/commit/e61cdb3064a78dfad695bbcdf57f2f7e2b942750))
+
 ## [4.3.1](https://github.com/cycjimmy/h5-pages/compare/v4.3.0...v4.3.1) (2023-02-23)
 
 
