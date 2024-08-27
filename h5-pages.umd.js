@@ -9,7 +9,7 @@
    * @param num
    * @returns {boolean}
    */
-  var isNumber = (num => Object.prototype.toString.call(num).slice(8, -1) === 'Number');
+  var isNumber = num => Object.prototype.toString.call(num).slice(8, -1) === 'Number';
 
   function styleInject(css, ref) {
     if (ref === void 0) ref = {};
@@ -82,7 +82,7 @@
    * @param promise
    * @returns {boolean}
    */
-  var isPromise = (promise => Object.prototype.toString.call(promise).slice(8, -1) === 'Promise');
+  var isPromise = promise => Object.prototype.toString.call(promise).slice(8, -1) === 'Promise';
 
   /**
    * function to promise
