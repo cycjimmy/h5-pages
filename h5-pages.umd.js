@@ -118,7 +118,7 @@
     return "\n<div class=\"".concat(style.root, "\">\n  <div class=\"swiper swiper-container ").concat(style.swiperContainer, "\">\n    <div class=\"swiper-wrapper ").concat(style.swiperWrapper, "\"></div>\n  </div>\n</div>\n");
   };
 
-  var root = new ( /*#__PURE__*/function () {
+  var root = new (/*#__PURE__*/function () {
     function _class() {
       _classCallCheck(this, _class);
       this.root = null;
