@@ -104,7 +104,7 @@
   });
 
   var css_248z$2 = ".root__root,.root__swiperContainer{position:absolute;z-index:1}.root__swiperWrapper{position:relative;z-index:1}.root__root,.root__swiperContainer{height:100%;left:0;top:0;width:100%}body.root__compatibleWithSafeArea{margin:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}.root__swiperWrapper{box-sizing:initial;height:100%;transition-property:transform;width:100%}";
-  var style$2 = {"swiperContainer":"root__swiperContainer","root":"root__root","swiperWrapper":"root__swiperWrapper","compatibleWithSafeArea":"root__compatibleWithSafeArea"};
+  var style$2 = {"root":"root__root","swiperContainer":"root__swiperContainer","swiperWrapper":"root__swiperWrapper","compatibleWithSafeArea":"root__compatibleWithSafeArea"};
   styleInject(css_248z$2);
 
   /**
