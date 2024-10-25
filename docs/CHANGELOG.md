@@ -1,3 +1,10 @@
+## [4.3.3](https://github.com/cycjimmy/h5-pages/compare/v4.3.2...v4.3.3) (2024-10-25)
+
+
+### Bug Fixes
+
+* use @cycjimmy/sass-lib@3 ([8487d2c](https://github.com/cycjimmy/h5-pages/commit/8487d2cc6124b4bd865fda3d432e26c0ef6117f5))
+
 ## [4.3.2](https://github.com/cycjimmy/h5-pages/compare/v4.3.1...v4.3.2) (2024-07-17)
 
 
