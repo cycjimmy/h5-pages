@@ -1,7 +1,7 @@
-@import "~@cycjimmy/sass-lib";
+@use "~@cycjimmy/sass-lib" as lib;
 
 .page {
-  @include flex-box-align(center, center);
+  @include lib.flex-box-align(center, center);
   flex-direction: column;
   overflow: hidden;
 

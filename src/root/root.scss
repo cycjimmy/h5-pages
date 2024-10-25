@@ -1,12 +1,7 @@
-@import "~@cycjimmy/sass-lib";
+@use "~@cycjimmy/sass-lib" as *;
 
 body {
   &.compatibleWithSafeArea {
-    margin:
-      constant(safe-area-inset-top)
-      constant(safe-area-inset-right)
-      constant(safe-area-inset-bottom)
-      constant(safe-area-inset-left);
     margin:
       env(safe-area-inset-top)
       env(safe-area-inset-right)
@@ -16,11 +11,11 @@ body {
 }
 
 .root {
-  @extend %fullContainer;
+  @extend %full-container;
 }
 
 .swiperContainer {
-  @extend %fullContainer;
+  @extend %full-container;
 }
 
 .swiperWrapper {
