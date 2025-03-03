@@ -12,7 +12,7 @@
   var isNumber = num => Object.prototype.toString.call(num).slice(8, -1) === 'Number';
 
   function styleInject(css, ref) {
-    if (ref === undefined) ref = {};
+    if (ref === void 0) ref = {};
     var insertAt = ref.insertAt;
     if (!css || typeof document === 'undefined') {
       return;
@@ -56,7 +56,7 @@
   function _toPrimitive(t, r) {
     if ("object" != typeof t || !t) return t;
     var e = t[Symbol.toPrimitive];
-    if (undefined !== e) {
+    if (void 0 !== e) {
       var i = e.call(t, r);
       if ("object" != typeof i) return i;
       throw new TypeError("@@toPrimitive must return a primitive value.");
@@ -352,13 +352,13 @@
      */
     function _default(_ref) {
       var _ref$name = _ref.name,
-        name = _ref$name === undefined ? '' : _ref$name,
+        name = _ref$name === void 0 ? '' : _ref$name,
         _ref$renderHtml = _ref.renderHtml,
-        renderHtml = _ref$renderHtml === undefined ? '' : _ref$renderHtml,
+        renderHtml = _ref$renderHtml === void 0 ? '' : _ref$renderHtml,
         _ref$pageEnter = _ref.pageEnter,
-        pageEnter = _ref$pageEnter === undefined ? function () {} : _ref$pageEnter,
+        pageEnter = _ref$pageEnter === void 0 ? function () {} : _ref$pageEnter,
         _ref$pageLeave = _ref.pageLeave,
-        pageLeave = _ref$pageLeave === undefined ? function () {} : _ref$pageLeave;
+        pageLeave = _ref$pageLeave === void 0 ? function () {} : _ref$pageLeave;
       _classCallCheck(this, _default);
       this.name = name;
       this.pageIndex = 0;
@@ -542,13 +542,13 @@
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
       Swiper = _ref.Swiper,
       _ref$pages = _ref.pages,
-      pages = _ref$pages === undefined ? [] : _ref$pages,
+      pages = _ref$pages === void 0 ? [] : _ref$pages,
       _ref$swiperOptions = _ref.swiperOptions,
-      swiperOptions = _ref$swiperOptions === undefined ? {} : _ref$swiperOptions,
+      swiperOptions = _ref$swiperOptions === void 0 ? {} : _ref$swiperOptions,
       _ref$containerExtraHt = _ref.containerExtraHtml,
-      containerExtraHtml = _ref$containerExtraHt === undefined ? '' : _ref$containerExtraHt,
+      containerExtraHtml = _ref$containerExtraHt === void 0 ? '' : _ref$containerExtraHt,
       _ref$compatibleWithSa = _ref.compatibleWithSafeArea,
-      compatibleWithSafeArea = _ref$compatibleWithSa === undefined ? true : _ref$compatibleWithSa;
+      compatibleWithSafeArea = _ref$compatibleWithSa === void 0 ? true : _ref$compatibleWithSa;
     if (Swiper) {
       root.setSwiperConstructor(Swiper);
     } else if (window.Swiper) {
