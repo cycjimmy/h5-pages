@@ -1,12 +1,12 @@
 # H5 Pages
-![][workflows-badge-image]
+[![Test CI][workflows-badge-image]][workflows-url]
 [![libraries dependency status][libraries-status-image]][libraries-status-url]
 [![libraries sourcerank][libraries-sourcerank-image]][libraries-sourcerank-url]
 [![Coverage Status][coverage-image]][coverage-url]
 [![Release date][release-date-image]][release-url]
-[![rollup][rollup-image]][rollup-url]
+[![vite][vite-image]][vite-url]
 [![semantic-release][semantic-image]][semantic-url]
-[![jest][jest-image]][jest-url]
+[![vitest][vitest-image]][vitest-url]
 [![npm license][license-image]][download-url]
 
 * H5 pages based on swiper5+. ([Demo][github-pages-url])
@@ -27,104 +27,137 @@ $ npm install @cycjimmy/h5-pages --save
 $ yarn add @cycjimmy/h5-pages
 ```
 
+## Module format
+
+The package is **ESM only**:
+
+| File | Format | Purpose |
+| --- | --- | --- |
+| `dist/h5-pages.esm.js` | ESM | `main`, `module` and `exports` entry (bundlers, `import`) |
+| `dist/h5-pages.umd.js` | UMD | unminified browser build for `<script>` tags |
+| `dist/h5-pages.umd.min.js` | UMD | minified browser/CDN build, `browser`/`unpkg`/`jsdelivr` |
+| `dist/index.d.ts` | Types | TypeScript declarations for `types` and the `exports` `types` condition |
+
+* There is no CommonJS bundle. Node.js 20.19+ / 22.12+ can `require()` the ESM
+  entry, because those versions load an ES module synchronously.
+* The UMD builds target ES2015, so Internet Explorer is no longer supported.
+* The stylesheet is not shipped as a separate `.css` file: the CSS Modules output
+  is inlined into the entry chunk and injected as a `<style>` element while the
+  module is evaluated, so a plain `<script>` tag needs nothing else.
+* Type declarations ship with the package, so no `@types/*` package is needed.
+  They describe Swiper structurally and never reference `swiper` itself.
+
+The toolchain needs Node.js `^22.22.2 || ^24.15.0 || >=26.0.0` (see `engines` in
+`package.json` and the requirements in [CONTRIBUTING.md](CONTRIBUTING.md)).
+
 ## Usage
 **h5-pages based on [Swiper5+](https://github.com/nolimits4web/Swiper). Add script of swiper in your project first.**
 
-### Methods 
+### Methods
+
 #### `init()`: Initialization function
+
 ```javascript
-import Swiper from 'swiper';
-import {init} from '@cycjimmy/h5-pages';
+import { init } from '@cycjimmy/h5-pages'
+import Swiper from 'swiper'
 
 init({
-  Swiper,                                                       // constructor of Swiper
-  pages: [page1, page2],                                        // An array of Page instances
-  containerExtraHtml: `<div class="swiper-pagination"></div>`,  // Extra Html under swiper-container, such as navigator, etc.
-  swiperOptions: {                                              // swiper configuration(loop is not supported)
+  Swiper, // constructor of Swiper
+  pages: [page1, page2], // An array of Page instances
+  containerExtraHtml: `<div class="swiper-pagination"></div>`, // Extra Html under swiper-container, such as navigator, etc.
+  swiperOptions: { // swiper configuration(loop is not supported)
     direction: 'vertical',
     pagination: {
       el: '.swiper-pagination',
     },
   },
-  compatibleWithSafeArea: true,                                 // Whether it is compatible with the safe area of screen. The default is true.
+  compatibleWithSafeArea: true, // Whether it is compatible with the safe area of screen. The default is true.
 })
 ```
 
 #### `getPageByName(name)`: Get a single page by name
+
 #### `changePageTo(name, speed)`: Jump to the page with the specified name
+
 * `name`: Page name.
 * `speed`: Transition duration (in ms).
 
 ### Use `h5Pages` to Get the Core Properties
+
 * `h5Pages.root`: H5 root element. Don't put pages like popups directly in `body`, it is recommended to use `root` as parent.
 * `h5Pages.swiper`: Main swiper instance for H5.
 
 ```javascript
-import {h5pages} from '@cycjimmy/h5-pages';
+import { h5Pages } from '@cycjimmy/h5-pages'
 
-console.log(h5Pages.root);    // H5 root element
-console.log(h5Pages.swiper);  // swiper instance
+console.log(h5Pages.root) // H5 root element
+console.log(h5Pages.swiper) // swiper instance
 ```
 
 ### Single Page
+
 #### Build Single Page
+
 ##### Build directly with the default Page
+
 ```javascript
-import {Page} from '@cycjimmy/h5-pages';
+import { Page } from '@cycjimmy/h5-pages'
 
 const page = new Page({
-  name: 'pageName',                                     // name for page. Default is "page" with index, such as "page0". 
-  renderHtml: `<div class="page-wrapper">page</div>`,   // Html structure under swiper-slide
-  pageEnter: () => console.log('enter page'),           // Hook function for enter the page
-  pageLeave: () => console.log('leave page'),           // Hook function for leave the page
-});
+  name: 'pageName', // name for page. Default is "page" with index, such as "page0".
+  renderHtml: `<div class="page-wrapper">page</div>`, // Html structure under swiper-slide
+  pageEnter: () => console.log('enter page'), // Hook function for enter the page
+  pageLeave: () => console.log('leave page'), // Hook function for leave the page
+})
 ```
 
 ##### Use Page extends (recommended)
+
 ```javascript
-import {Page} from '@cycjimmy/h5-pages';
+import { Page } from '@cycjimmy/h5-pages'
 
 const page = new class extends Page {
   constructor() {
     super({
-     name: 'page',
-     renderHtml: `<div class="page-wrapper">page</div>`,
-     pageEnter: () => console.log('enter page'),
-     pageLeave: () => console.log('leave page'),
-    });
+      name: 'page',
+      renderHtml: `<div class="page-wrapper">page</div>`,
+      pageEnter: () => console.log('enter page'),
+      pageLeave: () => console.log('leave page'),
+    })
   }
-  
+
   // paramInit(): [Option] Add your custom parameters.
   paramInit() {
     // In this function super.paramInit() must be called first.
-    super.paramInit();  
+    super.paramInit()
 
     // It is recommended to place your custom parameters here.
-    this.oneCustomElement = this.page.querySelector(`.${_style.oneCustomElement}`);
+    this.oneCustomElement = this.page.querySelector(`.one-custom-element`)
   }
 
   // eventBind(): [Option] Add your custom event bindings.
   eventBind() {
     // In this function super.eventBind() must be called first.
-    super.eventBind();
+    super.eventBind()
 
     // It is recommended to place custom event bindings here.
     this.oneCustomElement.addEventListener('click', () => {
-      console.log('oneCustomElement clicked');
-    });
+      console.log('oneCustomElement clicked')
+    })
   }
 
   // extraRender(): [Option] Add your custom action When the page loaded.
   extraRender() {
-    console.log('pageLoaded');
+    console.log('pageLoaded')
   }
 
   // Other custom extensions
-  // ... 
-};
+  // ...
+}()
 ```
 
 #### `Page` instance Properties
+
 * `name`: The name of the Page instance.
 * `root`: H5 root element. Same as `h5Pages.root`.
 * `swiper`: Main swiper instance for H5. Same as `h5Pages.swiper`.
@@ -132,30 +165,30 @@ const page = new class extends Page {
 * `pageIndex`: The index of the page instance, the same as `realIndex` for swiper.
 
 ### Popup
+
 #### Use Popup extends to Build a Popup
+
 ```javascript
-import {Popup} from '@cycjimmy/h5-pages';
+import { Popup } from '@cycjimmy/h5-pages'
 
-const Popup = new class extends Popup {
-  constructor() {
-    super();
-  }
-
+const popup = new class extends Popup {
   load() {
     // You must Overwrite this function with your own function
   }
 
   // Other custom extensions
-  // ... 
-};
+  // ...
+}()
 ```
 
 #### `Popup` Instance Methods
-* `load()`: Load(Show off) the popup. You must Overwrite this function with your own function.
+
+* `load()`: Load(Show off) the popup. You must Overwrite this function with your own function. It may return nothing or a `Promise<void>`.
 * `render(htmlText)`: Render custom html texts and add the popup to the root element of h5 page.
-* `remove()`: Remove the popup from the root element of h5 page. 
+* `remove()`: Remove the popup from the root element of h5 page.
 
 #### `Popup` instance Properties
+
 * `root`: H5 root element. Same as `h5Pages.root`.
 * `popup`: The root element of the popup instance.
 
@@ -163,9 +196,13 @@ const Popup = new class extends Popup {
 [![jsdelivr][jsdelivr-image]][jsdelivr-url]
 
 To use via a CDN include this in your HTML:
+
 ```text
-<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@4/dist/h5-pages.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@cycjimmy/h5-pages@5/dist/h5-pages.umd.min.js"></script>
 ```
+
+The UMD build exposes the global `h5Pages`, the same named exports as the ESM
+entry (`Page`, `Popup`, `init`, `getPageByName`, `changePageTo`, `h5Pages`).
 
 <!-- Links: -->
 [npm-image]: https://img.shields.io/npm/v/@cycjimmy/h5-pages
@@ -179,6 +216,7 @@ To use via a CDN include this in your HTML:
 [jsdelivr-url]: https://www.jsdelivr.com/package/npm/@cycjimmy/h5-pages
 
 [workflows-badge-image]: https://github.com/cycjimmy/h5-pages/workflows/Test%20CI/badge.svg
+[workflows-url]: https://github.com/cycjimmy/h5-pages/actions/workflows/nodeTestCI.yml
 
 [libraries-status-image]: https://img.shields.io/librariesio/release/npm/@cycjimmy/h5-pages
 [libraries-sourcerank-image]: https://img.shields.io/librariesio/sourcerank/npm/@cycjimmy/h5-pages
@@ -191,14 +229,14 @@ To use via a CDN include this in your HTML:
 [release-date-image]: https://img.shields.io/github/release-date/cycjimmy/h5-pages
 [release-url]: https://github.com/cycjimmy/h5-pages/releases
 
-[rollup-image]: https://img.shields.io/github/package-json/dependency-version/cycjimmy/h5-pages/dev/rollup
-[rollup-url]: https://github.com/rollup/rollup
+[vite-image]: https://img.shields.io/github/package-json/dependency-version/cycjimmy/h5-pages/dev/vite
+[vite-url]: https://github.com/vitejs/vite
 
-[semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%20%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-url]: https://github.com/semantic-release/semantic-release
 
-[jest-image]: https://img.shields.io/badge/tested_with-jest-99424f.svg
-[jest-url]: https://github.com/facebook/jest
+[vitest-image]: https://img.shields.io/badge/tested_with-vitest-6e9f18.svg
+[vitest-url]: https://vitest.dev/
 
 [license-image]: https://img.shields.io/npm/l/@cycjimmy/h5-pages
 

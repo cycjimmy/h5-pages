@@ -1,9 +1,0 @@
-@use "~@cycjimmy/sass-lib" as *;
-
-.popupWrapper {
-  @extend %full-container;
-  @extend %flex-center;
-  z-index: 99;
-  flex-direction: column;
-  overflow: hidden;
-}

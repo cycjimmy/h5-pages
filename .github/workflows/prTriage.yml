@@ -1,0 +1,56 @@
+name: PR Triage
+
+# Labels pull requests by the files they touch and assigns the author, so a
+# contribution is picked up without a manual pass over the pull request list.
+
+on:
+  # `pull_request_target` instead of `pull_request`: a pull request from a fork
+  # receives a read-only token on `pull_request`, so every labelling run for an
+  # outside contribution would fail instead of labelling it. This event runs in
+  # the base repository context and the checkout below stays on the base branch,
+  # so no code from the pull request is ever checked out or executed.
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  label:
+    name: Label the pull request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          # The base branch only: the labeler config is read from here, never
+          # from the pull request head.
+          persist-credentials: false
+
+      # `sync-labels` is off on purpose: a label added by hand must not be
+      # removed because the pull request no longer matches its path rule.
+      - name: Apply the path labels
+        uses: actions/labeler@v5
+        with:
+          sync-labels: false
+
+  assign:
+    name: Assign the author
+    # Dependabot cannot be assigned, and its pull requests are handled by the
+    # auto-merge workflow instead.
+    if: >-
+      github.actor != 'dependabot[bot]' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add the author as an assignee
+        uses: actions/github-script@v9
+        with:
+          script: |
+            await github.rest.issues.addAssignees({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              assignees: [context.payload.pull_request.user.login],
+            });

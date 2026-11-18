@@ -1,0 +1,33 @@
+@use "@cycjimmy/sass-lib" as *;
+
+// The global html/body rules are pulled in here instead of being a side-effect
+// import in src/index.ts: a side-effect import would be re-emitted into
+// dist/index.d.ts and point consumers at a stylesheet that no longer exists.
+@use "../theme/base";
+
+body {
+  &.compatible-with-safe-area {
+    margin:
+      env(safe-area-inset-top)
+      env(safe-area-inset-right)
+      env(safe-area-inset-bottom)
+      env(safe-area-inset-left);
+  }
+}
+
+.root {
+  @extend %full-container;
+}
+
+.swiper-container {
+  @extend %full-container;
+}
+
+.swiper-wrapper {
+  @extend %rel;
+
+  width: 100%;
+  height: 100%;
+  box-sizing: content-box;
+  transition-property: transform;
+}

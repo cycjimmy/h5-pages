@@ -1,0 +1,10 @@
+@use "@cycjimmy/sass-lib" as *;
+
+.popup-wrapper {
+  @extend %full-container;
+  @extend %flex-center;
+
+  z-index: 99;
+  overflow: hidden;
+  flex-direction: column;
+}
