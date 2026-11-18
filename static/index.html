@@ -87,9 +87,11 @@
 
 <body>
 <script src="//unpkg.com/swiper@9/swiper-bundle.min.js"></script>
-<script src="./h5-pages.umd.js"></script>
 <script type="module">
-  const {Page, Popup, init, changePageTo} = h5Pages;
+  // The dev server and the Pages deployment both build this file, so the demo
+  // imports the source entry instead of the prebuilt UMD bundle. Swiper is still
+  // provided by the CDN script above and picked up from `window` by `init()`.
+  import { changePageTo, init, Page, Popup } from '../src/index.ts';
 
   // Common Popup
   const popup = new class extends Popup {

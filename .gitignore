@@ -59,3 +59,5 @@ dist/
 temp/
 coverage/
 .release/
+# `trash-cli` used to drop deleted build directories here on external volumes
+.Trash/

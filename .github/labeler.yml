@@ -1,0 +1,29 @@
+# Path based labels applied by .github/workflows/prTriage.yml.
+# Every label listed here must exist in the repository.
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/**'
+
+build:
+  - changed-files:
+      - any-glob-to-any-file:
+          - vite.config.ts
+          - vitest.config.ts
+          - eslint.config.ts
+          - stylelint.config.ts
+          - 'tsconfig*.json'
+          - 'tasks/**'
+          - package.json
+          - package-lock.json
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.md'
+          - 'docs/**'
+
+dependencies:
+  - head-branch:
+      - ^dependabot/
