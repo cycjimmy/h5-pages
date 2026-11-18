@@ -1,7 +1,7 @@
 {
   "name": "@cycjimmy/h5-pages",
   "type": "module",
-  "version": "4.3.3",
+  "version": "5.0.0",
   "description": "full h5 page plugin based on swiper",
   "author": "cycjimmy <cycjimmy@gmail.com> (https://github.com/cycjimmy)",
   "license": "MIT",

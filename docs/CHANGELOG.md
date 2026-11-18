@@ -1,3 +1,16 @@
+# [5.0.0](https://github.com/cycjimmy/h5-pages/compare/v4.3.3...v5.0.0) (2026-11-18)
+
+
+* feat!: rebuild the toolchain around Vite, TypeScript and an ESM-only package ([f832749](https://github.com/cycjimmy/h5-pages/commit/f8327497d1794f6cbf3e2cff02e1e6e839945416))
+
+
+### BREAKING CHANGES
+
+* the CommonJS bundle (dist/h5-pages.cjs) and the require
+export are removed; the package now ships ESM and UMD only. The dev toolchain
+requires Node.js ^22.22.2 || ^24.15.0 || >=26.0.0, legacy IE targets are dropped,
+and the build is produced by Vite instead of Rollup.
+
 ## [4.3.3](https://github.com/cycjimmy/h5-pages/compare/v4.3.2...v4.3.3) (2024-10-25)
 
 
