@@ -31,7 +31,7 @@ jobs:
       # `sync-labels` is off on purpose: a label added by hand must not be
       # removed because the pull request no longer matches its path rule.
       - name: Apply the path labels
-        uses: actions/labeler@v5
+        uses: actions/labeler@v7
         with:
           sync-labels: false
 
