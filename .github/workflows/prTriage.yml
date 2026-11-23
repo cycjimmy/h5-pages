@@ -38,9 +38,11 @@ jobs:
   assign:
     name: Assign the author
     # Dependabot cannot be assigned, and its pull requests are handled by the
-    # auto-merge workflow instead.
+    # auto-merge workflow instead. The condition keys off the pull request
+    # author, not `github.actor`: any later push (a rebase, a follow-up fix)
+    # makes the actor the pusher, and assigning `dependabot[bot]` returns 403.
     if: >-
-      github.actor != 'dependabot[bot]' &&
+      github.event.pull_request.user.login != 'dependabot[bot]' &&
       github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
