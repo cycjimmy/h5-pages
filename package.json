@@ -64,7 +64,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^10.0.0",
     "@cycjimmy/awesome-js-funcs": "^5.0.0",
-    "@cycjimmy/config-lib": "^3.2.2",
+    "@cycjimmy/config-lib": "^4.0.0",
     "@cycjimmy/sass-lib": "^5.0.1",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^26.6.6",
