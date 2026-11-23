@@ -44,9 +44,10 @@ artifact.
   through cosmiconfig, whose TypeScript loader resolves `typescript` from
   semantic-release's own install tree (inside the action) rather than from this
   project.
-* `src/types/*.d.ts` holds the ambient declarations for CSS Modules,
-  `@cycjimmy/config-lib` and `@cycjimmy/awesome-js-funcs`, none of which ship
-  types. `src/types/swiper.ts` describes Swiper structurally on purpose: the
+* `src/types/*.d.ts` holds the ambient declarations for CSS Modules and
+  `@cycjimmy/awesome-js-funcs`, which ship no types. `@cycjimmy/config-lib`
+  ships its own declarations and is imported through its `dist/*` exports.
+  `src/types/swiper.ts` describes Swiper structurally on purpose: the
   published declarations must not depend on a consumer's `swiper` install.
 * `__test__/type-contract.ts` is a compile-only file: `type-check` fails if the
   declarations stop accepting a documented consumer usage (swiper's own options
